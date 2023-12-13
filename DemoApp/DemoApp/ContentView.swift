@@ -1,8 +1,8 @@
 //
 // ContentView.swift
-// swiftui-extensions
+// DemoApp
 //
-// Created by Huy D. on 12/11/23
+// Created by Huy D. on 12/12/23
 // mjn2max.github.io 😜
 // 
 // Copyright © 2023. All rights reserved.

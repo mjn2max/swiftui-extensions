@@ -1,8 +1,8 @@
 //
-// swiftui_extensionsApp.swift
-// swiftui-extensions
+// DemoAppApp.swift
+// DemoApp
 //
-// Created by Huy D. on 12/11/23
+// Created by Huy D. on 12/12/23
 // mjn2max.github.io 😜
 // 
 // Copyright © 2023. All rights reserved.
@@ -12,7 +12,7 @@
 import SwiftUI
 
 @main
-struct swiftui_extensionsApp: App {
+struct DemoAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

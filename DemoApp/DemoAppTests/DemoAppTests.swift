@@ -1,8 +1,8 @@
 //
-// swiftui_extensionsTests.swift
-// swiftui-extensionsTests
+// DemoAppTests.swift
+// DemoAppTests
 //
-// Created by Huy D. on 12/11/23
+// Created by Huy D. on 12/12/23
 // mjn2max.github.io 😜
 // 
 // Copyright © 2023. All rights reserved.
@@ -10,9 +10,9 @@
 //
 
 import XCTest
-@testable import swiftui_extensions
+@testable import DemoApp
 
-final class swiftui_extensionsTests: XCTestCase {
+final class DemoAppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,8 +1,8 @@
 //
-// swiftui_extensionsUITestsLaunchTests.swift
-// swiftui-extensionsUITests
+// DemoAppUITestsLaunchTests.swift
+// DemoAppUITests
 //
-// Created by Huy D. on 12/11/23
+// Created by Huy D. on 12/12/23
 // mjn2max.github.io 😜
 // 
 // Copyright © 2023. All rights reserved.
@@ -11,7 +11,7 @@
 
 import XCTest
 
-final class swiftui_extensionsUITestsLaunchTests: XCTestCase {
+final class DemoAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
