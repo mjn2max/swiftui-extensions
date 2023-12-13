@@ -44,6 +44,7 @@
 		64CC2B7E2B296A5600C58C48 /* DemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CC2B822B296A5600C58C48 /* DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITests.swift; sourceTree = "<group>"; };
 		64CC2B842B296A5600C58C48 /* DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		64CC2B922B296B1800C58C48 /* SwiftUI-Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftUI-Extensions"; path = "../SwiftUI-Extensions"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		64CC2B5B2B296A5500C58C48 = {
 			isa = PBXGroup;
 			children = (
+				64CC2B922B296B1800C58C48 /* SwiftUI-Extensions */,
 				64CC2B662B296A5500C58C48 /* DemoApp */,
 				64CC2B772B296A5600C58C48 /* DemoAppTests */,
 				64CC2B812B296A5600C58C48 /* DemoAppUITests */,
