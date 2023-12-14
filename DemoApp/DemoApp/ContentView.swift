@@ -10,6 +10,7 @@
 //
 
 import SwiftUI
+import SwiftUIExtensions
 
 struct ContentView: View {
     var body: some View {
@@ -18,6 +19,13 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+                
+            Circle()
+                .trim(from: 0, to: 0.5)
+                .fill(.black)
+                .frame(width: 50, height: 50)
+                .rotationEffect(.init(degrees: -90))
+                .hLeading()
         }
         .padding()
     }

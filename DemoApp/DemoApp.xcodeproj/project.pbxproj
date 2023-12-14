@@ -14,6 +14,7 @@
 		64CC2B792B296A5600C58C48 /* DemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC2B782B296A5600C58C48 /* DemoAppTests.swift */; };
 		64CC2B832B296A5600C58C48 /* DemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC2B822B296A5600C58C48 /* DemoAppUITests.swift */; };
 		64CC2B852B296A5600C58C48 /* DemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC2B842B296A5600C58C48 /* DemoAppUITestsLaunchTests.swift */; };
+		64EF03DF2B2BB0F300A6F57F /* SwiftUIExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 64EF03DE2B2BB0F300A6F57F /* SwiftUIExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +45,7 @@
 		64CC2B7E2B296A5600C58C48 /* DemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CC2B822B296A5600C58C48 /* DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITests.swift; sourceTree = "<group>"; };
 		64CC2B842B296A5600C58C48 /* DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		64CC2B922B296B1800C58C48 /* SwiftUI-Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftUI-Extensions"; path = "../SwiftUI-Extensions"; sourceTree = "<group>"; };
+		64EF03DC2B2BB04900A6F57F /* SwiftUIExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUIExtensions; path = ../SwiftUIExtensions; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64EF03DF2B2BB0F300A6F57F /* SwiftUIExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,11 +77,12 @@
 		64CC2B5B2B296A5500C58C48 = {
 			isa = PBXGroup;
 			children = (
-				64CC2B922B296B1800C58C48 /* SwiftUI-Extensions */,
+				64EF03DC2B2BB04900A6F57F /* SwiftUIExtensions */,
 				64CC2B662B296A5500C58C48 /* DemoApp */,
 				64CC2B772B296A5600C58C48 /* DemoAppTests */,
 				64CC2B812B296A5600C58C48 /* DemoAppUITests */,
 				64CC2B652B296A5500C58C48 /* Products */,
+				64EF03DD2B2BB0F300A6F57F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +132,13 @@
 			path = DemoAppUITests;
 			sourceTree = "<group>";
 		};
+		64EF03DD2B2BB0F300A6F57F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +155,9 @@
 			dependencies = (
 			);
 			name = DemoApp;
+			packageProductDependencies = (
+				64EF03DE2B2BB0F300A6F57F /* SwiftUIExtensions */,
+			);
 			productName = DemoApp;
 			productReference = 64CC2B642B296A5500C58C48 /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -584,6 +597,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		64EF03DE2B2BB0F300A6F57F /* SwiftUIExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUIExtensions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 64CC2B5C2B296A5500C58C48 /* Project object */;
 }

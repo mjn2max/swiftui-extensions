@@ -2,7 +2,7 @@
 // ViewExtensions.swift
 //
 //
-// Created by Huy D. on 12/12/23
+// Created by Huy D. on 12/14/23
 // mjn2max.github.io 😜
 // 
 // Copyright © 2023. All rights reserved.
@@ -12,15 +12,15 @@
 import SwiftUI
 
 extension View {
-    func hLeading() -> some View {
+    public func hLeading() -> some View {
         self.frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    func hCenter() -> some View {
+    public func hCenter() -> some View {
         self.frame(maxWidth: .infinity, alignment: .center)
     }
     
-    func hTrailing() -> some View {
+    public func hTrailing() -> some View {
         self.frame(maxWidth: .infinity, alignment: .trailing)
     }
 }

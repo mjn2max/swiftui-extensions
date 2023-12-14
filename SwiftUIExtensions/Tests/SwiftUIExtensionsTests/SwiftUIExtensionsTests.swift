@@ -1,7 +1,7 @@
 import XCTest
-@testable import SwiftUI_Extensions
+@testable import SwiftUIExtensions
 
-final class SwiftUI_ExtensionsTests: XCTestCase {
+final class SwiftUIExtensionsTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
