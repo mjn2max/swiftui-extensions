@@ -24,4 +24,16 @@ extension View {
     public func hTrailing() -> some View {
         self.frame(maxWidth: .infinity, alignment: .trailing)
     }
+    
+    public func vTop() -> some View {
+        self.frame(maxHeight: .infinity, alignment: .top)
+    }
+    
+    public func vCenter() -> some View {
+        self.frame(maxHeight: .infinity, alignment: .center)
+    }
+    
+    public func vBottom() -> some View {
+        self.frame(maxHeight: .infinity, alignment: .bottom)
+    }
 }

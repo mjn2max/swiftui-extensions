@@ -11,6 +11,7 @@
 		6434DDDC2B2BF93D00B9B2A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6434DDDB2B2BF93D00B9B2A0 /* ContentView.swift */; };
 		6434DDDE2B2BF93D00B9B2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6434DDDD2B2BF93D00B9B2A0 /* Assets.xcassets */; };
 		6434DDE12B2BF93D00B9B2A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6434DDE02B2BF93D00B9B2A0 /* Preview Assets.xcassets */; };
+		6434DDEB2B2BFC1200B9B2A0 /* SwiftUI-Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 6434DDEA2B2BFC1200B9B2A0 /* SwiftUI-Extensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		6434DDDB2B2BF93D00B9B2A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6434DDDD2B2BF93D00B9B2A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6434DDE02B2BF93D00B9B2A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6434DDE92B2BFC0A00B9B2A0 /* SwiftUI-Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftUI-Extensions"; path = ../..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6434DDEB2B2BFC1200B9B2A0 /* SwiftUI-Extensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +40,7 @@
 			children = (
 				6434DDD82B2BF93D00B9B2A0 /* iOS-Examples */,
 				6434DDD72B2BF93D00B9B2A0 /* Products */,
+				6434DDE82B2BFC0A00B9B2A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +71,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		6434DDE82B2BFC0A00B9B2A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6434DDE92B2BFC0A00B9B2A0 /* SwiftUI-Extensions */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +95,9 @@
 			dependencies = (
 			);
 			name = "iOS-Examples";
+			packageProductDependencies = (
+				6434DDEA2B2BFC1200B9B2A0 /* SwiftUI-Extensions */,
+			);
 			productName = "iOS-Examples";
 			productReference = 6434DDD62B2BF93D00B9B2A0 /* iOS-Examples.app */;
 			productType = "com.apple.product-type.application";
@@ -342,6 +357,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6434DDEA2B2BFC1200B9B2A0 /* SwiftUI-Extensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "SwiftUI-Extensions";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6434DDCE2B2BF93D00B9B2A0 /* Project object */;
 }
