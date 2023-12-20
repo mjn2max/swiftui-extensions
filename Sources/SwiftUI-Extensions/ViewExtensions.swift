@@ -12,6 +12,7 @@
 
 import SwiftUI
 
+// MARK: - Frame extensions
 extension View {
     public func hLeading() -> some View {
         self.frame(maxWidth: .infinity, alignment: .leading)
@@ -38,6 +39,7 @@ extension View {
     }
 }
 
+// MARK: - NavBar extensions
 extension View {
     func setNavBarColor(color: Color) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
