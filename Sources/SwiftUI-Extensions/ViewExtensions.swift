@@ -37,6 +37,14 @@ extension View {
     public func vBottom() -> some View {
         self.frame(maxHeight: .infinity, alignment: .bottom)
     }
+    
+    func getSafeArea() -> UIEdgeInsets {
+        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let safeArea = screen.windows.first?.safeAreaInsets else {
+            return .zero
+        }
+        return safeArea
+    }
 }
 
 // MARK: - NavBar extensions
