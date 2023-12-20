@@ -4,7 +4,7 @@
 //
 // Created by Huy D. on 12/14/23
 // mjn2max.github.io 😜
-// 
+//
 // Copyright © 2023. All rights reserved.
 // ___ORGANIZATIONNAME___
 //
@@ -35,5 +35,30 @@ extension View {
     
     public func vBottom() -> some View {
         self.frame(maxHeight: .infinity, alignment: .bottom)
+    }
+}
+
+extension View {
+    func setNavBarColor(color: Color) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            NotificationCenter.default.post(name: NSNotification.Name("UPDATENAVBAR"), object: nil, userInfo: [
+                "color": color
+            ])
+        }
+    }
+    
+    func resetNavBar() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            NotificationCenter.default.post(name: NSNotification.Name("UPDATENAVBAR"), object: nil)
+        }
+    }
+    
+    func setNavBarTitleColor(color: Color) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            NotificationCenter.default.post(name: NSNotification.Name("UPDATENAVBAR"), object: nil, userInfo: [
+                "color": color,
+                "forTitle": true
+            ])
+        }
     }
 }
