@@ -37,12 +37,4 @@ extension View {
     public func vBottom() -> some View {
         self.frame(maxHeight: .infinity, alignment: .bottom)
     }
-    
-    func getSafeAreaInsets() -> UIEdgeInsets {
-        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let safeAreaInsets = scene.windows.first?.safeAreaInsets else {
-            return .zero
-        }
-        return safeAreaInsets
-    }
 }
