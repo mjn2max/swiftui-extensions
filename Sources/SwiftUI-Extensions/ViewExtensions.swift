@@ -38,37 +38,11 @@ extension View {
         self.frame(maxHeight: .infinity, alignment: .bottom)
     }
     
-    func getSafeArea() -> UIEdgeInsets {
-        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let safeArea = screen.windows.first?.safeAreaInsets else {
+    func getSafeAreaInsets() -> UIEdgeInsets {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let safeAreaInsets = scene.windows.first?.safeAreaInsets else {
             return .zero
         }
-        return safeArea
-    }
-}
-
-// MARK: - NavBar extensions
-extension View {
-    func setNavBarColor(color: Color) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            NotificationCenter.default.post(name: NSNotification.Name("UPDATENAVBAR"), object: nil, userInfo: [
-                "color": color
-            ])
-        }
-    }
-    
-    func resetNavBar() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            NotificationCenter.default.post(name: NSNotification.Name("UPDATENAVBAR"), object: nil)
-        }
-    }
-    
-    func setNavBarTitleColor(color: Color) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            NotificationCenter.default.post(name: NSNotification.Name("UPDATENAVBAR"), object: nil, userInfo: [
-                "color": color,
-                "forTitle": true
-            ])
-        }
+        return safeAreaInsets
     }
 }
