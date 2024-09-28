@@ -38,4 +38,11 @@ extension View {
         }
         return safeAreaInsets
     }
+
+    var isSplitScreen: Bool {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return false
+        }
+        return scene.windows.first?.frame.size != scene.screen.bounds.size
+    }
 }

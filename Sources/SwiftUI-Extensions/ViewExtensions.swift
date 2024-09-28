@@ -46,24 +46,9 @@ extension View {
             .background(color, ignoresSafeAreaEdges: .all)
     }
 
-    @ViewBuilder
-    func offset(coordinateSpace: String, offset: @escaping (CGFloat) -> Void) -> some View {
-        self.overlay {
-            GeometryReader { proxy in
-                let minY = proxy.frame(in: .named(coordinateSpace)).minY
-                Color.clear
-                    .preference(key: OffsetKey.self, value: minY)
-                    .onPreferenceChange(OffsetKey.self) { value in
-                        offset(value)
-                    }
-            }
-        }
-    }
-}
-
-struct OffsetKey: PreferenceKey {
-    static var defaultValue: CGFloat = .zero
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
+    func background(withColor color: Color, opacity: Double) -> some View {
+        self
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(color.opacity(opacity), ignoresSafeAreaEdges: .all)
     }
 }
