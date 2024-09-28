@@ -12,6 +12,37 @@
 import SwiftUI
 
 extension View {
+    /*
+     Usage:
+     Button("Present Alert") {
+         showAlertWithTextField(title: "Login", message: "Enter your password", hintText: "123456", primaryTitle: "Login", secondaryTitle: "Cancel") { username in
+             print(username)
+         } secondaryAction: {
+             print("Cancel")
+         }
+     }
+    */
+    func showAlertWithTextField(title: String, message: String, hintText: String,
+                 primaryTitle: String, secondaryTitle: String,
+                 primaryAction: @escaping (String) -> Void,
+                 secondaryAction: @escaping () -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = hintText
+        }
+        alert.addAction(.init(title: secondaryTitle, style: .cancel, handler: { _ in
+            secondaryAction()
+        }))
+        alert.addAction(.init(title: primaryTitle, style: .default, handler: { _ in
+            if let text = alert.textFields?[0].text {
+                primaryAction(text)
+            } else {
+                primaryAction("")
+            }
+        }))
+        rootViewController.present(alert, animated: true)
+    }
+
     func popupNavigationView<Content: View>(horizontalPadding: CGFloat = 40,
                                             show: Binding<Bool>,
                                             @ViewBuilder content: @escaping () -> Content) -> some View {
