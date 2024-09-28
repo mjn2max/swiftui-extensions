@@ -13,7 +13,7 @@ import SwiftUI
 
 extension View {
     /*
-     Usage:
+     USAGES:
      Button("Present Alert") {
          showAlertWithTextField(title: "Login", message: "Enter your password", hintText: "123456", primaryTitle: "Login", secondaryTitle: "Cancel") { username in
              print(username)

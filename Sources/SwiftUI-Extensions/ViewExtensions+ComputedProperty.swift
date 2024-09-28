@@ -16,7 +16,7 @@ extension View {
         UIScreen.main.bounds
     }
 
-    var appSize: CGSize {
+    var screenSize: CGSize {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return .zero
         }
@@ -44,5 +44,14 @@ extension View {
             return false
         }
         return scene.windows.first?.frame.size != scene.screen.bounds.size
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func borderView() -> some View {
+        self.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .shadow(color: .black.opacity(0.1), radius: 5, x: 3, y: 3)
+            .shadow(color: .black.opacity(0.1), radius: 5, x: -3, y: -3)
     }
 }

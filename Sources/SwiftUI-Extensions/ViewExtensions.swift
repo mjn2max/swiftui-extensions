@@ -41,14 +41,17 @@ extension View {
 
 extension View {
     func background(withColor color: Color) -> some View {
-        self
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        self.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(color, ignoresSafeAreaEdges: .all)
     }
-
+    
     func background(withColor color: Color, opacity: Double) -> some View {
-        self
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        self.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(color.opacity(opacity), ignoresSafeAreaEdges: .all)
+    }
+
+    func disable(withOpacity opacity: Double, _ condition: Bool) -> some View {
+        self.disabled(condition)
+            .opacity(condition ? opacity : 1)
     }
 }
