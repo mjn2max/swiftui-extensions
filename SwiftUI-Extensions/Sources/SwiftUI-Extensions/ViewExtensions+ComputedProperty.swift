@@ -9,8 +9,12 @@
 // ___ORGANIZATIONNAME___
 //
 
+#if canImport(UIKit)
+import UIKit
+#endif
 import SwiftUI
 
+#if os(iOS) || os(tvOS)
 extension View {
     var screenBounds: CGRect {
         UIScreen.main.bounds
@@ -46,6 +50,7 @@ extension View {
         return scene.windows.first?.frame.size != scene.screen.bounds.size
     }
 }
+#endif
 
 extension View {
     @ViewBuilder

@@ -9,14 +9,19 @@
 // ___ORGANIZATIONNAME___
 //
 
+#if canImport(UIKit)
+import UIKit
+#endif
 import SwiftUI
 
 public struct Utils {
     // Find if the app is in Split View
-    public static func isSplit() -> Bool {
+#if os(iOS) || os(tvOS)
+    @MainActor public static func isSplit() -> Bool {
         guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return false
         }
         return screen.windows.first?.frame.size != screen.screen.bounds.size
     }
+#endif
 }

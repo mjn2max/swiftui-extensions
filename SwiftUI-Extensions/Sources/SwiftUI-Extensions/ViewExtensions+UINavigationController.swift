@@ -9,6 +9,9 @@
 // ___ORGANIZATIONNAME___
 //
 
+#if canImport(UIKit)
+import UIKit
+#endif
 import SwiftUI
 
 // MARK: - NavBar extensions
@@ -37,6 +40,7 @@ extension View {
     }
 }
 
+#if os(iOS) || os(tvOS)
 extension UINavigationController {
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,3 +88,4 @@ extension UINavigationController {
         navigationBar.compactAppearance = appearance
     }
 }
+#endif

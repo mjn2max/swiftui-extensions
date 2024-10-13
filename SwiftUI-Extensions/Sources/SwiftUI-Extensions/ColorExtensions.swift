@@ -9,14 +9,20 @@
 // ___ORGANIZATIONNAME___
 //
 
+#if canImport(UIKit)
+import UIKit
+#endif
 import SwiftUI
 
 extension Color {
+#if os(iOS) || os(tvOS) || os(watchOS)
     var isDarkColor: Bool {
         UIColor(self).isDarkColor
     }
+#endif
 }
 
+#if os(iOS) || os(tvOS) || os(watchOS)
 extension UIColor {
     var isDarkColor: Bool {
         var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
@@ -35,3 +41,4 @@ extension UIColor {
         return String(format: "#%02lX%02lX%02lX", lroundf(red * 255), lroundf(green * 255), lroundf(blue * 255))
     }
 }
+#endif

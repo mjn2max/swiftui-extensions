@@ -28,7 +28,7 @@ extension EnvironmentValues {
      }
      */
     private struct UniversalGesture: EnvironmentKey {
-        static var defaultValue: Bool = false
+        static let defaultValue: Bool = false
     }
 
     var isDragging: Bool {
@@ -64,7 +64,7 @@ extension EnvironmentValues {
      }
      */
     struct SafeAreaValue: EnvironmentKey {
-        static var defaultValue: EdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        static let defaultValue: EdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
 
     var safeArea: EdgeInsets {

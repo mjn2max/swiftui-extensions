@@ -9,9 +9,13 @@
 // ___ORGANIZATIONNAME___
 //
 
+#if canImport(UIKit)
+import UIKit
+#endif
 import SwiftUI
 
 extension View {
+#if os(iOS) || os(tvOS)
     /*
      USAGES:
      Button("Present Alert") {
@@ -42,6 +46,7 @@ extension View {
         }))
         rootViewController.present(alert, animated: true)
     }
+#endif
 
     func popupNavigationView<Content: View>(horizontalPadding: CGFloat = 40,
                                             show: Binding<Bool>,
