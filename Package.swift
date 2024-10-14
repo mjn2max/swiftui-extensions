@@ -18,7 +18,7 @@ let package = Package(
         .target(
             name: "SwiftUI-Extensions",
             exclude: [
-                "../Demo/"
+                "Demo"
             ]
         ),
         .testTarget(
