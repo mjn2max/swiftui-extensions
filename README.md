@@ -4,42 +4,17 @@
 [![Platforms](https://img.shields.io/badge/Platforms-iOS_macOS_watchOS_tvOS_visionOS-yellowgreen?style=flat-square)](https://img.shields.io/badge/Platforms-iOS_macOS_watchOS_tvOS_visionOS-Green?style=flat-square)
 [![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
 
-SwiftUI-Extension is a library written in Swift
+A collection of useful extensions, utilities, and custom modifiers for SwiftUI to streamline and enhance your iOS, macOS, watchOS, and tvOS development.
 
-- [Features](#features)
-- [Component Libraries](#component-libraries)
-- [Requirements](#requirements)
-- [Migration Guides](#migration-guides)
-- [Communication](#communication)
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [Usage]()
-- [Open Radars](#open-radars)
-- [FAQ](#faq)
-- [Credits](#credits)
-- [Donations](#donations)
-- [License](#license)
+## Features 🚀
 
-## Features
-
-- [x] Views Extensions
-- [x]
+- Custom Modifiers: Simplify complex UI elements with reusable custom modifiers.
+- View Extensions: Add common functionality to SwiftUI views like rounded borders, shadows, and more.
+- Utility Methods: Helper functions to make SwiftUI coding more efficient.
+- Cross-Platform: Works across all platforms supported by SwiftUI.
+- Well-Documented: Clear and concise code comments to explain functionality.
 
 ## Component Libraries
-
-## Requirements
-
-| Platform    | Minimum Swift Version | Installation                                                         | Status           |
-| ----------- | --------------------- | -------------------------------------------------------------------- | ---------------- |
-| iOS 13.0+   | 5.7.1 / Xcode 14.1    | [Swift Package Manager](#swift-package-manager), [Manual](#manually) | Not Fully Tested |
-| macOS 13.0+ | Latest Only           | [Swift Package Manager](#swift-package-manager)                      | Not Fully Tested |
-| watchOS     | Latest Only           | [Swift Package Manager](#swift-package-manager)                      | Not Fully Tested |
-| tvOS        | Latest Only           | [Swift Package Manager](#swift-package-manager)                      | Not Fully Tested |
-| visionOS    | Latest Only           | [Swift Package Manager](#swift-package-manager)                      | Not Fully Tested |
-
-## Migration Guides
-
-## Communication
 
 ## Installation
 
@@ -51,7 +26,7 @@ Once you have your Swift package set up, adding SwiftUI-Extensions as a dependen
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/mjn2max/SwiftUI-Extensions.git")
+    .package(url: "https://github.com/mjn2max/swiftui-extensions.git")
 ]
 ```
 
