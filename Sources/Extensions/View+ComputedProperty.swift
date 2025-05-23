@@ -4,7 +4,7 @@
 //
 // Created by Huy D. on 9/23/24
 // mjn2max.github.io 😜
-// 
+//
 // Copyright © 2024. All rights reserved.
 // CodePassion.dev
 //
@@ -54,9 +54,30 @@ extension View {
 
 extension View {
     @ViewBuilder
+    func `if`<Content: View>(_ logicValue: Bool, modifier: (Self) -> Content) -> some View {
+        if logicValue {
+            modifier(self)
+        } else {
+            self
+        }
+    }
+
+    @ViewBuilder
     func borderView() -> some View {
         self.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: .black.opacity(0.1), radius: 5, x: 3, y: 3)
             .shadow(color: .black.opacity(0.1), radius: 5, x: -3, y: -3)
     }
 }
+
+/* Demo
+struct ContentView: View {
+    @State private var shouldAddShadow: Bool = true
+    var body: some View {
+        Text("Hi There!")
+            .if(shouldAddShadow){ view in
+                view.shadow(color: .black, radius: 5, x: 5.0, y: 5.0)
+            }
+    }
+}
+*/
