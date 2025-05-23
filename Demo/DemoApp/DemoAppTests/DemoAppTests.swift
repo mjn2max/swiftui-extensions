@@ -6,7 +6,7 @@
 // mjn2max.github.io 😜
 // 
 // Copyright © 2024. All rights reserved.
-// ___ORGANIZATIONNAME___
+// CodePassion.dev
 //
 
 import Testing

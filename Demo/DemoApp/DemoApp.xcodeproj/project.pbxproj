@@ -172,6 +172,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
+				ORGANIZATIONNAME = CodePassion.dev;
 				TargetAttributes = {
 					6465A3002CBC0D6F00670313 = {
 						CreatedOnToolsVersion = 16.0;

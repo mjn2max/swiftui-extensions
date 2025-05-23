@@ -6,9 +6,8 @@
 // mjn2max.github.io 😜
 //
 // Copyright © 2023. All rights reserved.
-// ___ORGANIZATIONNAME___
+// CodePassion.dev
 //
-
 
 import SwiftUI
 
