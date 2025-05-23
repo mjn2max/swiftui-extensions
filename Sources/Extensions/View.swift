@@ -38,12 +38,13 @@ extension View {
     }
 }
 
+// MARK: - Background extensions
 extension View {
     func background(withColor color: Color) -> some View {
         self.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(color, ignoresSafeAreaEdges: .all)
     }
-    
+
     func background(withColor color: Color, opacity: Double) -> some View {
         self.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(color.opacity(opacity), ignoresSafeAreaEdges: .all)
@@ -54,3 +55,56 @@ extension View {
             .opacity(condition ? opacity : 1)
     }
 }
+
+// MARK: - Rotation extensions
+#if os(iOS) || os(tvOS)
+extension View {
+    func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
+        self.modifier(RotationModifier(action: action))
+    }
+}
+
+fileprivate struct RotationModifier: ViewModifier {
+    let action: (UIDeviceOrientation) -> Void
+    func body(content: Content) -> some View {
+        content
+            .onAppear()
+            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                action(UIDevice.current.orientation)
+            }
+    }
+}
+#endif
+
+/* Demo
+struct ContentView: View {
+    @State private var orientation = UIDeviceOrientation.unknown
+    var body: some View {
+        VStack {
+            switch orientation {
+            case .faceDown:
+                Text("Face Down")
+            case .unknown:
+                Text("unknown")
+            case .portrait:
+                Text("Portrait")
+            case .portraitUpsideDown:
+                Text("Portrait Upside Down")
+            case .landscapeLeft:
+                Text("Landscape Left")
+            case .landscapeRight:
+                Text("Landscape Right")
+            case .faceUp:
+                Text("Face Up")
+            @unknown default:
+                Text("unknown position")
+            }
+            Text("I am showing device orientation")
+                .foregroundColor(.secondary)
+        }
+        .onRotate { newOrientation in
+            orientation = newOrientation
+        }
+    }
+}
+ */
