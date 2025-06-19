@@ -80,28 +80,41 @@ Comming soon...
 
 ## Communication
 
-Comming soon...
+- **Bugs & Feature Requests:** Please [open an issue](https://github.com/mjn2max/swiftui-extensions/issues) on GitHub.
+- **Questions & Support:** Use the issue tracker for all questions, suggestions, and support requests.
+- **Contact:** For all communication, please use the GitHub issue tracker to ensure transparency and faster responses.
 
 ## Contributing
 
-Comming soon...
+Contributions are welcome! Please:
+
+1. [Open an issue](https://github.com/mjn2max/swiftui-extensions/issues) or discussion to propose changes or extensions.
+2. Fork the [repo](https://github.com/mjn2max/swiftui-extensions) and create your feature branch.
+3. Add tests for new functionality.
+4. Submit a pull request with a clear description.
+
+All contributions must follow the [Code of Conduct](https://www.swift.org/code-of-conduct/).
 
 ## Open Radars
 
-Comming soon...
+If you discover any Swift or Apple bugs that impact this project, please share the radar number and a brief description in this section to help other contributors stay informed.
 
 ## FAQs
 
-Comming soon...
+**Q: Can I use only a subset of the extensions?**  
+A: Yes! Just include the specific files you need.
+
+**Q: Is this production ready?**  
+A: Core extensions are stable, but some platforms are not fully tested. Use at your discretion and report any issues.
 
 ## Credits
 
-Comming soon...
+Created and maintained by [mjn2max](https://github.com/mjn2max) and contributors. See the [Contributors](https://github.com/mjn2max/swiftui-extensions/graphs/contributors) page for a full list.
 
 ## Donations
 
-Comming soon...
+If you find this useful, you can sponsor this project via [GitHub Sponsors](https://github.com/sponsors/mjn2max) or [Buy Me a Coffee](https://buymeacoffee.com/mjn2max). Your support helps maintain and improve Swift-Extensions!
 
 ## License
 
-Comming soon...
+This project is licensed under the MIT License. See [LICENSE](/LICENSE) for details.
