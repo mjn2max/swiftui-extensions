@@ -28,7 +28,7 @@ A collection of useful extensions, utilities, and custom modifiers for SwiftUI t
 - **View Extensions:** Add common functionality to SwiftUI views like rounded borders, shadows, and more.
 - **Utility Methods:** Helper functions to make SwiftUI coding more efficient.
 - **Cross-Platform:** Works across all platforms supported by SwiftUI.
-- **Well-Documented:** Clear and concise code comments to explain functionality.
+- **Thorough Documented:** Clear and concise code comments to explain functionality.
 
 ## Installation
 
@@ -66,17 +66,68 @@ import SwiftUIExtensions
 
 ## Usage
 
-Comming soon...
+SwiftUI‑Extensions offers seamless "drop‑in"”" convenience — import and start using powerful view modifiers and utilities immediately:
+
+**Example 1: Rounded Border & Shadow**
+
+```swift
+Text("Hello, SwiftUI Extensions!")
+    .roundedBorder(cornerRadius: 8, color: .blue, lineWidth: 2)
+    .shadowStyle()
+```
+
+**Example 2: Adaptive Padding**
+
+```swift
+VStack {
+    Text("Padded Content")
+}
+.adaptivePadding()
+```
+
+**Example 3: Custom Color Opacity Utility**
+
+```swift
+let baseColor = Color.red
+let faded = baseColor.withOpacity(0.5) // Utility extension for opacity adjustments
+```
 
 More examples can be found in the [Component Libraries](#component-libraries).
 
 ## Component Libraries
 
-Comming soon...
+Here are some of the core components that will be included in this package:
+
+`CardView.swift`
+
+- _CardView:_ A reusable card container with rounded corners, shadows, and tap animation support—perfect for profile cards, list items, and dashboard tiles.
+- _SlideOverCard (via DeckKit-inspired style):_ SwiftUI card sheet style for onboarding flows and quick popups.
+
+`SheetView.swift`
+
+- _BottomSheet:_ A versatile bottom sheet component that slides up from the bottom, configurable across 3 states (collapsed, partial, expanded) with drag-to-dismiss behavior.
+
+`ListCard.swift`
+
+- _ListCardContainer:_ Combines CardView styling with a header, thumbnail, and subtitle—ideal for list/grid UIs and feeds.
+
+`AnimatedTabBar.swift`
+
+- _AnimatedTabBar:_ Custom tab bar with animated icon transitions and theming options—boosts engagement in multi-section apps.
+
+`OneTimeOnboarding.swift`
+
+- _OnboardingCarousel:_ A guided onboarding component that supports swipeable multi-page flows with PageView transitions.
+
+`LoadingSkeleton.swift`
+
+- _SkeletonPlaceholder:_ A skeleton-loading view built with shimmering gradients, ready to mask content during loading states.
+
+For a full, up-to-date list of components and previews, browse the [Sources directory](/Sources/).
 
 ## Migration Guides
 
-Comming soon...
+Coming soon...
 
 ## Communication
 
