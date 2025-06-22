@@ -45,7 +45,7 @@ dependencies: [
 Then import in your source files:
 
 ```swift
-import SwiftUIExtensions
+import SwiftUI-Extensions
 ```
 
 ### Manually
