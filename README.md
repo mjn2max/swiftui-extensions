@@ -164,7 +164,7 @@ Created and maintained by [mjn2max](https://github.com/mjn2max) and contributors
 
 ## Donations
 
-If you find this useful, you can sponsor this project via [GitHub Sponsors](https://github.com/sponsors/mjn2max) or [Buy Me a Coffee](https://buymeacoffee.com/mjn2max). Your support helps maintain and improve Swift-Extensions!
+If you find this useful, you can sponsor this project via [GitHub Sponsors](https://github.com/sponsors/mjn2max) or [Buy Me a Coffee](https://buymeacoffee.com/mjn2max). Your support helps maintain and improve SwiftUI-Extensions!
 
 ## License
 
