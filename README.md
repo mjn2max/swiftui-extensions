@@ -125,6 +125,8 @@ Here are some of the core components that will be included in this package:
 
 For a full, up-to-date list of components and previews, browse the [Sources directory](/Sources/).
 
+The repository’s source folder structure is organized by category, aligned with the structure used in [Apple’s SwiftUI documentation](https://developer.apple.com/documentation/swiftui/).
+
 ## Migration Guides
 
 Coming soon...

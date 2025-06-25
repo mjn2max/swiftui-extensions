@@ -11,7 +11,9 @@
 
 import Foundation
 
+/// A struct to define app-wide constant values used throughout the SwiftUI-Extensions package.
+
 struct Constant {
-    // NSNotification Name
+    /// Notification name used to trigger a navigation bar update.
     static let updateNavBar = "UPDATENAVBAR"
 }
