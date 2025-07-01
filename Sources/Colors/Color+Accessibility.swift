@@ -34,4 +34,32 @@ public extension Color {
 #endif
         return .primary
     }
+
+
+    /// Returns a version of the color with increased contrast by adjusting brightness slightly.
+    /// Useful for ensuring UI elements stand out more clearly against their backgrounds.
+    ///
+    /// - Returns: A `Color` with slightly increased contrast (lighter or darker).
+    ///
+    /// # Usage
+    /// ```swift
+    /// let base = Color.gray
+    /// let enhanced = base.highContrast()
+    /// ```
+    func highContrast() -> Color {
+#if os(iOS)
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+            let adjustment: CGFloat = 0.2
+            let average = (red + green + blue) / 3
+            let factor = average < 0.5 ? 1 + adjustment : 1 - adjustment
+            let newColor = UIColor(red: min(red * factor, 1),
+                                   green: min(green * factor, 1),
+                                   blue: min(blue * factor, 1),
+                                   alpha: alpha)
+            return Color(newColor)
+        }
+#endif
+        return self
+    }
 }
