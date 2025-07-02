@@ -62,4 +62,26 @@ public extension Color {
 #endif
         return self
     }
+
+
+    /// Returns the inverted (complementary) color of the current color.
+    /// Useful for creating visual contrast, hover states, or inverted themes.
+    ///
+    /// - Returns: A `Color` with each RGB component inverted.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let original = Color.red
+    /// let inverted = original.inverted()
+    /// ```
+    func inverted() -> Color {
+    #if os(iOS)
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+            let invertedColor = UIColor(red: 1 - red, green: 1 - green, blue: 1 - blue, alpha: alpha)
+            return Color(invertedColor)
+        }
+    #endif
+        return self
+    }
 }
