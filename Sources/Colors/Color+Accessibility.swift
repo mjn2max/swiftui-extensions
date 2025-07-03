@@ -75,13 +75,36 @@ public extension Color {
     /// let inverted = original.inverted()
     /// ```
     func inverted() -> Color {
-    #if os(iOS)
+#if os(iOS)
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
         if UIColor(self).getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
             let invertedColor = UIColor(red: 1 - red, green: 1 - green, blue: 1 - blue, alpha: alpha)
             return Color(invertedColor)
         }
-    #endif
+#endif
+        return self
+    }
+
+    /// Returns a grayscale version of the current color.
+    /// This is useful for accessibility adjustments or design purposes.
+    ///
+    /// - Returns: A grayscale `Color` based on the average brightness of the RGB components.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let colored = Color.purple
+    /// let gray = colored.grayscale()
+    /// ```
+    func grayscale() -> Color {
+#if os(iOS)
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+            let gray = (red + green + blue) / 3
+            let grayColor = UIColor(red: gray, green: gray, blue: gray, alpha: alpha)
+            return Color(grayColor)
+        }
+#endif
         return self
     }
 }
+
