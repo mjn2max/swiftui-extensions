@@ -106,5 +106,39 @@ public extension Color {
 #endif
         return self
     }
-}
 
+
+    /// Returns a color that is either the current color or its inverted version, depending on contrast with a given background.
+    /// This is useful for ensuring sufficient contrast between foreground and background elements.
+    ///
+    /// - Parameter background: The background color to evaluate contrast against.
+    /// - Returns: A `Color` that provides better visual contrast against the given background.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let textColor = Color.blue.adaptiveContrast(to: .white)
+    /// ```
+    func adaptiveContrast(to background: Color) -> Color {
+#if os(iOS)
+        var fgRed: CGFloat = 0, fgGreen: CGFloat = 0, fgBlue: CGFloat = 0, fgAlpha: CGFloat = 1
+        var bgRed: CGFloat = 0, bgGreen: CGFloat = 0, bgBlue: CGFloat = 0, bgAlpha: CGFloat = 1
+
+        let fgUIColor = UIColor(self)
+        let bgUIColor = UIColor(background)
+
+        if fgUIColor.getRed(&fgRed, green: &fgGreen, blue: &fgBlue, alpha: &fgAlpha),
+           bgUIColor.getRed(&bgRed, green: &bgGreen, blue: &bgBlue, alpha: &bgAlpha) {
+
+            let fgLuminance = (0.299 * fgRed + 0.587 * fgGreen + 0.114 * fgBlue)
+            let bgLuminance = (0.299 * bgRed + 0.587 * bgGreen + 0.114 * bgBlue)
+
+            let contrastRatio = (max(fgLuminance, bgLuminance) + 0.05) / (min(fgLuminance, bgLuminance) + 0.05)
+
+            if contrastRatio < 4.5 {
+                return self.inverted()
+            }
+        }
+#endif
+        return self
+    }
+}
