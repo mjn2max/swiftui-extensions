@@ -11,6 +11,8 @@
 
 import SwiftUI
 
+// MARK: - Color Extensions
+
 public extension Color {
     /// Determines an accessible foreground color (black or white) based on the current background color's brightness.
     ///
@@ -140,5 +142,31 @@ public extension Color {
         }
 #endif
         return self
+    }
+}
+
+
+// MARK: - Color Extensions - Return `Bool`
+
+extension Color {
+    /// Determines whether the color is considered light or dark based on perceived brightness.
+    ///
+    /// - Returns: `true` if the color is light, `false` if dark. Defaults to `nil` on unsupported platforms.
+    ///
+    /// # Usage
+    /// ```swift
+    /// if Color.yellow.isLightColor() {
+    ///     // use dark foreground
+    /// }
+    /// ```
+    func isLightColor() -> Bool {
+#if os(iOS)
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+            let brightness = (red * 299 + green * 587 + blue * 114) / 1000
+            return brightness > 0.5
+        }
+#endif
+        return false
     }
 }
