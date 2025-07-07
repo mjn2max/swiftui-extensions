@@ -11,7 +11,7 @@
 
 import SwiftUI
 
-// MARK: - Color Extensions
+// MARK: - Color Extensions - Accessibility
 
 public extension Color {
     /// Determines an accessible foreground color (black or white) based on the current background color's brightness.
@@ -142,6 +142,38 @@ public extension Color {
         }
 #endif
         return self
+    }
+
+
+    /// Blends the current color with another color by a given ratio.
+    ///
+    /// - Parameters:
+    ///   - color: The color to blend with.
+    ///   - ratio: The ratio (0.0–1.0) of the second color in the blend.
+    /// - Returns: A new `Color` representing the blend.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let blended = Color.red.blended(with: .blue, ratio: 0.5)
+    /// ```
+    func blended(with color: Color, ratio: CGFloat) -> Color {
+#if os(iOS)
+        var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 1
+        var r2: CGFloat = 0, g2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 1
+
+        UIColor(self).getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        UIColor(color).getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+
+        let clampedRatio = max(0, min(1, ratio))
+        let newRed = r1 * (1 - clampedRatio) + r2 * clampedRatio
+        let newGreen = g1 * (1 - clampedRatio) + g2 * clampedRatio
+        let newBlue = b1 * (1 - clampedRatio) + b2 * clampedRatio
+        let newAlpha = a1 * (1 - clampedRatio) + a2 * clampedRatio
+
+        return Color(UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: newAlpha))
+#else
+        return self
+#endif
     }
 }
 
