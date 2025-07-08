@@ -202,3 +202,39 @@ extension Color {
         return false
     }
 }
+
+
+// MARK: - Color Extensions - Return `CGFloat`
+
+extension Color {
+    /// Computes the relative luminosity difference between two colors based on WCAG guidelines.
+    ///
+    /// - Parameter other: The color to compare with.
+    /// - Returns: A `CGFloat` representing the contrast ratio (1.0–21.0).
+    ///
+    /// # Usage
+    /// ```swift
+    /// let ratio = Color.black.contrastRatio(with: .white) // 21.0
+    /// ```
+    func contrastRatio(with other: Color) -> CGFloat {
+#if os(iOS)
+        func luminance(for color: UIColor) -> CGFloat {
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
+            color.getRed(&r, green: &g, blue: &b, alpha: &a)
+            func adjust(_ component: CGFloat) -> CGFloat {
+                return component <= 0.03928 ? component / 12.92 : pow((component + 0.055) / 1.055, 2.4)
+            }
+            let rl = adjust(r)
+            let gl = adjust(g)
+            let bl = adjust(b)
+            return 0.2126 * rl + 0.7152 * gl + 0.0722 * bl
+        }
+
+        let l1 = luminance(for: UIColor(self))
+        let l2 = luminance(for: UIColor(other))
+        return (max(l1, l2) + 0.05) / (min(l1, l2) + 0.05)
+#else
+        return 1.0
+#endif
+    }
+}
