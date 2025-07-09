@@ -237,4 +237,23 @@ extension Color {
         return 1.0
 #endif
     }
+
+
+    /// Returns the alpha (opacity) component of the color, if available.
+    ///
+    /// - Returns: A `CGFloat` between 0.0 (fully transparent) and 1.0 (fully opaque), or `1.0` by default.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let alpha = Color.black.opacityValue()
+    /// ```
+    func opacityValue() -> CGFloat {
+#if os(iOS)
+        var alpha: CGFloat = 1.0
+        UIColor(self).getRed(nil, green: nil, blue: nil, alpha: &alpha)
+        return alpha
+#else
+        return 1.0
+#endif
+    }
 }
