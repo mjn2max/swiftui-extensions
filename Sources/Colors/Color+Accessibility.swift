@@ -175,6 +175,28 @@ public extension Color {
         return self
 #endif
     }
+
+
+    /// Returns a new color by rotating the hue by a given angle (in degrees).
+    ///
+    /// - Parameter degrees: The amount to rotate the hue.
+    /// - Returns: A new `Color` with adjusted hue.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let shifted = Color.red.hueRotated(by: 180)
+    /// ```
+    func hueRotated(by degrees: CGFloat) -> Color {
+#if os(iOS)
+        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            let newHue = fmod(hue + degrees / 360.0, 1.0)
+            let adjustedHue = newHue < 0 ? newHue + 1.0 : newHue
+            return Color(hue: adjustedHue, saturation: saturation, brightness: brightness, opacity: alpha)
+        }
+#endif
+        return self
+    }
 }
 
 
