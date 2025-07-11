@@ -278,4 +278,29 @@ extension Color {
         return 1.0
 #endif
     }
+
+    
+    /// Calculates the color distance (Euclidean distance in RGB space) to another color.
+    ///
+    /// - Parameter other: The color to compare to.
+    /// - Returns: A `CGFloat` representing the distance between two colors.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let distance = Color.red.distance(to: .blue)
+    /// ```
+    func distance(to other: Color) -> CGFloat {
+#if os(iOS)
+        var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 1
+        var r2: CGFloat = 0, g2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 1
+        UIColor(self).getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        UIColor(other).getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+        let dr = r1 - r2
+        let dg = g1 - g2
+        let db = b1 - b2
+        return sqrt(dr * dr + dg * dg + db * db)
+#else
+        return 0
+#endif
+    }
 }
