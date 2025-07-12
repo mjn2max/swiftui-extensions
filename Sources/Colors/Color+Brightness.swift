@@ -29,4 +29,27 @@ extension Color {
 #endif
         return 1.0 // default brightness
     }
+
+
+    /// Clamps the brightness of the color within a specific range.
+    ///
+    /// - Parameters:
+    ///   - minimum: The minimum brightness (0.0 to 1.0).
+    ///   - maximum: The maximum brightness (0.0 to 1.0).
+    /// - Returns: A `Color` adjusted to stay within the given brightness range.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let adjusted = Color.blue.clampedBrightness(minimum: 0.3, maximum: 0.7)
+    /// ```
+    func clampedBrightness(minimum: CGFloat, maximum: CGFloat) -> Color {
+    #if os(iOS)
+        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            let clampedBrightness = min(max(brightness, minimum), maximum)
+            return Color(hue: hue, saturation: saturation, brightness: clampedBrightness, opacity: alpha)
+        }
+    #endif
+        return self
+    }
 }
