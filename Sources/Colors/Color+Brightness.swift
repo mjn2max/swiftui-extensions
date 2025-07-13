@@ -4,7 +4,7 @@
 //
 // Created by Huy D. on 6/26/25
 // mjn2max.github.io 😜
-// 
+//
 // Copyright © 2025. All rights reserved.
 // CodePassion.dev
 //
@@ -43,13 +43,35 @@ extension Color {
     /// let adjusted = Color.blue.clampedBrightness(minimum: 0.3, maximum: 0.7)
     /// ```
     func clampedBrightness(minimum: CGFloat, maximum: CGFloat) -> Color {
-    #if os(iOS)
+#if os(iOS)
         var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
         if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
             let clampedBrightness = min(max(brightness, minimum), maximum)
             return Color(hue: hue, saturation: saturation, brightness: clampedBrightness, opacity: alpha)
         }
-    #endif
+#endif
+        return self
+    }
+
+
+    /// Adjusts the brightness of the color by a given percentage.
+    ///
+    /// - Parameter percentage: The percentage to adjust brightness by (-1.0 to 1.0).
+    /// - Returns: A new `Color` with brightness increased or decreased accordingly.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let lighter = Color.red.adjustingBrightness(by: 0.2)
+    /// let darker = Color.red.adjustingBrightness(by: -0.2)
+    /// ```
+    func adjustingBrightness(by percentage: CGFloat) -> Color {
+#if os(iOS)
+        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            let newBrightness = min(max(brightness + percentage, 0.0), 1.0)
+            return Color(hue: hue, saturation: saturation, brightness: newBrightness, opacity: alpha)
+        }
+#endif
         return self
     }
 }
