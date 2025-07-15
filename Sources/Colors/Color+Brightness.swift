@@ -74,4 +74,25 @@ extension Color {
 #endif
         return self
     }
+
+
+    /// Returns a new color with the same brightness but reduced saturation.
+    ///
+    /// - Parameter amount: The amount to reduce saturation by (0.0–1.0).
+    /// - Returns: A less saturated version of the color.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let muted = Color.green.desaturated(by: 0.4)
+    /// ```
+    func desaturated(by amount: CGFloat) -> Color {
+#if os(iOS)
+        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            let newSaturation = max(saturation - amount, 0)
+            return Color(hue: hue, saturation: newSaturation, brightness: brightness, opacity: alpha)
+        }
+#endif
+        return self
+    }
 }
