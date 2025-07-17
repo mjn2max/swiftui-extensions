@@ -95,4 +95,23 @@ extension Color {
 #endif
         return self
     }
+
+    
+    /// Returns a grayscale version of the color, preserving brightness.
+    ///
+    /// - Returns: A new `Color` desaturated to grayscale.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let gray = Color.purple.grayscalePreservingBrightness()
+    /// ```
+    func grayscalePreservingBrightness() -> Color {
+#if os(iOS)
+        var brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(nil, saturation: nil, brightness: &brightness, alpha: &alpha) {
+            return Color(hue: 0.0, saturation: 0.0, brightness: brightness, opacity: alpha)
+        }
+#endif
+        return self
+    }
 }
