@@ -76,6 +76,27 @@ extension Color {
     }
 
 
+    /// Increases the saturation of the color by a given amount, preserving brightness.
+    ///
+    /// - Parameter amount: The amount to increase saturation by (0.0–1.0).
+    /// - Returns: A more saturated version of the color.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let vivid = Color.blue.increasedSaturation(by: 0.3)
+    /// ```
+    func increasedSaturation(by amount: CGFloat) -> Color {
+    #if os(iOS)
+        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            let newSaturation = min(saturation + amount, 1.0)
+            return Color(hue: hue, saturation: newSaturation, brightness: brightness, opacity: alpha)
+        }
+    #endif
+        return self
+    }
+
+
     /// Returns a new color with the same brightness but reduced saturation.
     ///
     /// - Parameter amount: The amount to reduce saturation by (0.0–1.0).
@@ -96,7 +117,7 @@ extension Color {
         return self
     }
 
-    
+
     /// Returns a grayscale version of the color, preserving brightness.
     ///
     /// - Returns: A new `Color` desaturated to grayscale.
@@ -114,4 +135,6 @@ extension Color {
 #endif
         return self
     }
+
+
 }
