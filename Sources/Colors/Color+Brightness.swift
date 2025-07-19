@@ -137,4 +137,22 @@ extension Color {
     }
 
 
+    /// Returns a color with inverted brightness while preserving hue and saturation.
+    ///
+    /// - Returns: A new `Color` with inverted brightness.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let inverted = Color.yellow.invertedBrightness()
+    /// ```
+    func invertedBrightness() -> Color {
+    #if os(iOS)
+        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            let invertedBrightness = 1.0 - brightness
+            return Color(hue: hue, saturation: saturation, brightness: invertedBrightness, opacity: alpha)
+        }
+    #endif
+        return self
+    }
 }
