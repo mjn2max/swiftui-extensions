@@ -155,4 +155,35 @@ extension Color {
     #endif
         return self
     }
+
+
+    /// Mixes the color with white or black to create a tint or shade, depending on the weight.
+    ///
+    /// - Parameter weight: The weight (0.0 to 1.0) used to mix with white (positive) or black (negative).
+    /// - Returns: A tinted or shaded `Color`.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let tinted = Color.red.tintedOrShaded(by: 0.3)   // mix with white
+    /// let shaded = Color.red.tintedOrShaded(by: -0.3)  // mix with black
+    /// ```
+    func tintedOrShaded(by weight: CGFloat) -> Color {
+    #if os(iOS)
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
+        if UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) {
+            let clampedWeight = min(max(weight, -1), 1)
+            if clampedWeight >= 0 {
+                r = r + (1 - r) * clampedWeight
+                g = g + (1 - g) * clampedWeight
+                b = b + (1 - b) * clampedWeight
+            } else {
+                r = r * (1 + clampedWeight)
+                g = g * (1 + clampedWeight)
+                b = b * (1 + clampedWeight)
+            }
+            return Color(red: r, green: g, blue: b, opacity: a)
+        }
+    #endif
+        return self
+    }
 }
