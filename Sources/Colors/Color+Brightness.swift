@@ -186,4 +186,23 @@ extension Color {
     #endif
         return self
     }
+
+
+    /// Returns a color with normalized brightness (0.5), preserving hue and saturation.
+    ///
+    /// - Returns: A `Color` normalized to mid-level brightness.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let normalized = Color.orange.normalizedBrightness()
+    /// ```
+    func normalizedBrightness() -> Color {
+    #if os(iOS)
+        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
+        if UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            return Color(hue: hue, saturation: saturation, brightness: 0.5, opacity: alpha)
+        }
+    #endif
+        return self
+    }
 }
