@@ -205,4 +205,30 @@ extension Color {
     #endif
         return self
     }
+
+
+    /// Brightens the color by blending it with white.
+    ///
+    /// - Parameter amount: The blend amount from 0.0 (no change) to 1.0 (full white).
+    /// - Returns: A brightened `Color` closer to white.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let bright = Color.gray.brightened(by: 0.3)
+    /// ```
+    func brightened(by amount: CGFloat) -> Color {
+    #if os(iOS)
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
+        if UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) {
+            let clamped = min(max(amount, 0), 1)
+            return Color(
+                red: r + (1 - r) * clamped,
+                green: g + (1 - g) * clamped,
+                blue: b + (1 - b) * clamped,
+                opacity: a
+            )
+        }
+    #endif
+        return self
+    }
 }
