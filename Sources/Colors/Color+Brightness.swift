@@ -231,4 +231,30 @@ extension Color {
     #endif
         return self
     }
+
+
+    /// Darkens the color by blending it with black.
+    ///
+    /// - Parameter amount: The blend amount from 0.0 (no change) to 1.0 (full black).
+    /// - Returns: A darkened `Color` closer to black.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let dark = Color.orange.darkened(by: 0.4)
+    /// ```
+    func darkened(by amount: CGFloat) -> Color {
+    #if os(iOS)
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
+        if UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) {
+            let clamped = min(max(amount, 0), 1)
+            return Color(
+                red: r * (1 - clamped),
+                green: g * (1 - clamped),
+                blue: b * (1 - clamped),
+                opacity: a
+            )
+        }
+    #endif
+        return self
+    }
 }
