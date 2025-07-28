@@ -29,4 +29,24 @@ extension Shape {
             .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, dash: dash))
             .foregroundColor(color)
     }
+
+    
+    /// Applies a fill with optional opacity and blend mode.
+    ///
+    /// - Parameters:
+    ///   - color: The fill color.
+    ///   - opacity: The opacity of the fill (default is 1.0).
+    ///   - blendMode: The blend mode to apply (default is `.normal`).
+    /// - Returns: A view with the shape filled using the given style.
+    ///
+    /// # Usage
+    /// ```swift
+    /// RoundedRectangle(cornerRadius: 10).styledFill(color: .green, opacity: 0.7, blendMode: .multiply)
+    /// ```
+    func styledFill(color: Color, opacity: Double = 1.0, blendMode: BlendMode = .normal) -> some View {
+        self
+            .fill(color)
+            .opacity(opacity)
+            .blendMode(blendMode)
+    }
 }
