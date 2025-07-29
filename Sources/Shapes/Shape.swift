@@ -30,7 +30,7 @@ extension Shape {
             .foregroundColor(color)
     }
 
-    
+
     /// Applies a fill with optional opacity and blend mode.
     ///
     /// - Parameters:
@@ -48,5 +48,25 @@ extension Shape {
             .fill(color)
             .opacity(opacity)
             .blendMode(blendMode)
+    }
+
+    
+    /// Applies both a fill and stroke with custom styling.
+    ///
+    /// - Parameters:
+    ///   - fillColor: The fill color.
+    ///   - strokeColor: The stroke color.
+    ///   - lineWidth: The width of the stroke.
+    /// - Returns: A view with the shape filled and stroked.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Capsule().styledFillAndStroke(fillColor: .white, strokeColor: .gray, lineWidth: 2)
+    /// ```
+    func styledFillAndStroke(fillColor: Color, strokeColor: Color, lineWidth: CGFloat = 1) -> some View {
+        ZStack {
+            self.fill(fillColor)
+            self.stroke(strokeColor, lineWidth: lineWidth)
+        }
     }
 }
