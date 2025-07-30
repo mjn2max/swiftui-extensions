@@ -50,7 +50,7 @@ extension Shape {
             .blendMode(blendMode)
     }
 
-    
+
     /// Applies both a fill and stroke with custom styling.
     ///
     /// - Parameters:
@@ -68,5 +68,23 @@ extension Shape {
             self.fill(fillColor)
             self.stroke(strokeColor, lineWidth: lineWidth)
         }
+    }
+
+
+    /// Applies a gradient stroke with optional line width and dash pattern.
+    ///
+    /// - Parameters:
+    ///   - gradient: The `LinearGradient` to use as the stroke.
+    ///   - lineWidth: The width of the stroke.
+    ///   - dash: Optional dash pattern.
+    /// - Returns: A view with the shape stroked using a gradient.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Capsule().gradientStroke(gradient: LinearGradient(colors: [.red, .blue], startPoint: .leading, endPoint: .trailing), lineWidth: 3)
+    /// ```
+    func gradientStroke(gradient: LinearGradient, lineWidth: CGFloat = 1, dash: [CGFloat] = []) -> some View {
+        self
+            .stroke(gradient, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, dash: dash))
     }
 }
