@@ -87,4 +87,22 @@ extension Shape {
         self
             .stroke(gradient, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, dash: dash))
     }
+
+    
+    /// Clips the shape to a specific size and alignment.
+    ///
+    /// - Parameters:
+    ///   - size: The target size for the clipped shape.
+    ///   - alignment: The alignment within the frame (default is `.center`).
+    /// - Returns: A clipped shape within the specified frame.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Circle().clippedToSize(CGSize(width: 50, height: 50))
+    /// ```
+    func clippedToSize(_ size: CGSize, alignment: Alignment = .center) -> some View {
+        self
+            .frame(width: size.width, height: size.height, alignment: alignment)
+            .clipped()
+    }
 }
