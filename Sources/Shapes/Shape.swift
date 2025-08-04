@@ -11,6 +11,8 @@
 
 import SwiftUI
 
+// MARK: - Shape Extension
+
 extension Shape {
     /// Applies a stroke style with rounded corners and optional dash pattern.
     ///
