@@ -32,6 +32,29 @@ extension Image {
             .modifier(ConditionalFrameModifier(size: size))
     }
 
+
+    /// Applies a circular clipping mask to the image and optionally adds a border.
+    ///
+    /// - Parameters:
+    ///   - borderColor: Optional color for the circular border.
+    ///   - lineWidth: The width of the border line (default is 1).
+    /// - Returns: A view with the image clipped to a circle and optionally bordered.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("profile").circular(borderColor: .blue, lineWidth: 2)
+    /// ```
+    func circular(borderColor: Color? = nil, lineWidth: CGFloat = 1) -> some View {
+        self
+            .clipShape(Circle())
+            .overlay {
+                if let borderColor = borderColor {
+                    Circle().stroke(borderColor, lineWidth: lineWidth)
+                }
+            }
+    }
+
+    
     private struct ConditionalFrameModifier: ViewModifier {
         let size: CGSize?
 
