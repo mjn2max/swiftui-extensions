@@ -42,4 +42,25 @@ extension View {
             including: .all
         )
     }
+
+
+    /// Adds a long-press gesture that triggers an action after a specified duration.
+    ///
+    /// - Parameters:
+    ///   - duration: The minimum duration to trigger the action.
+    ///   - perform: The action to execute on long press.
+    /// - Returns: A view with the long-press gesture attached.
+    ///
+    /// # Usage
+    /// ```swift
+    /// SomeView().onLongPress(duration: 1.0) {
+    ///     print("Long pressed!")
+    /// }
+    /// ```
+    func onLongPress(duration: Double = 0.5, perform: @escaping () -> Void) -> some View {
+        self.gesture(
+            LongPressGesture(minimumDuration: duration)
+                .onEnded { _ in perform() }
+        )
+    }
 }
