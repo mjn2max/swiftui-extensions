@@ -63,4 +63,25 @@ extension View {
                 .onEnded { _ in perform() }
         )
     }
+
+
+    /// Adds a tap gesture that triggers a given action.
+    ///
+    /// - Parameters:
+    ///   - count: The number of taps required (default is 1).
+    ///   - perform: The action to execute on tap.
+    /// - Returns: A view with the tap gesture attached.
+    ///
+    /// # Usage
+    /// ```swift
+    /// SomeView().onTapGesture(count: 2) {
+    ///     print("Double tapped!")
+    /// }
+    /// ```
+    func onTapGesture(count: Int = 1, perform: @escaping () -> Void) -> some View {
+        self.gesture(
+            TapGesture(count: count)
+                .onEnded { perform() }
+        )
+    }
 }
