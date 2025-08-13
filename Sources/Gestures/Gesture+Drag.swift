@@ -84,4 +84,27 @@ extension View {
                 .onEnded { perform() }
         )
     }
+
+
+    /// Adds a magnification gesture that updates a scale binding.
+    ///
+    /// - Parameter scale: A `Binding<CGFloat>` to update during the magnification.
+    /// - Returns: A view with the magnification gesture applied.
+    ///
+    /// # Usage
+    /// ```swift
+    /// @State private var scale: CGFloat = 1.0
+    /// SomeView().magnify(scale: $scale)
+    /// ```
+    func magnify(scale: Binding<CGFloat>) -> some View {
+        self.gesture(
+            MagnificationGesture()
+                .onChanged { value in
+                    scale.wrappedValue = value
+                }
+                .onEnded { value in
+                    scale.wrappedValue = value
+                }
+        )
+    }
 }
