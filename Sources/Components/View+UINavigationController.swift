@@ -1,5 +1,5 @@
 //
-// SwiftUIView.swift
+// View+UINavigationController.swift
 // SwiftUI-Extensions
 //
 // Created by Huy D. on 9/23/24

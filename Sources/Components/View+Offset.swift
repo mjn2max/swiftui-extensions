@@ -1,5 +1,5 @@
 //
-// SwiftUIView.swift
+// View+Offset.swift
 // SwiftUI-Extensions
 //
 // Created by Huy D. on 9/28/24
