@@ -27,6 +27,7 @@ extension View {
         self.frame(maxWidth: .infinity, alignment: .leading)
     }
 
+
     /// Expands the view horizontally and centers it.
     ///
     /// - Returns: A view with infinite horizontal width and centered alignment.
@@ -39,6 +40,7 @@ extension View {
     public func hCenter() -> some View {
         self.frame(maxWidth: .infinity, alignment: .center)
     }
+
 
     /// Expands the view horizontally and aligns it to the trailing edge.
     ///
@@ -53,6 +55,7 @@ extension View {
         self.frame(maxWidth: .infinity, alignment: .trailing)
     }
 
+
     /// Expands the view vertically and aligns it to the top edge.
     ///
     /// - Returns: A view with infinite vertical height and top alignment.
@@ -65,6 +68,7 @@ extension View {
     public func vTop() -> some View {
         self.frame(maxHeight: .infinity, alignment: .top)
     }
+
 
     /// Expands the view vertically and centers it.
     ///
@@ -79,6 +83,7 @@ extension View {
         self.frame(maxHeight: .infinity, alignment: .center)
     }
 
+    
     /// Expands the view vertically and aligns it to the bottom edge.
     ///
     /// - Returns: A view with infinite vertical height and bottom alignment.
