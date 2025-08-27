@@ -14,86 +14,86 @@ import SwiftUI
 // MARK: - View Alignments Extensions
 
 extension View {
-    /// Expands the view horizontally and aligns it to the leading edge.
+    /// Fills the available width and aligns it to the leading edge.
     ///
     /// - Returns: A view with infinite horizontal width and leading alignment.
     ///
     /// # Usage
     /// ```swift
     /// Text("Hello")
-    ///     .hLeading()
+    ///     .alignLeft()
     /// ```
-    public func hLeading() -> some View {
+    public func alignLeft() -> some View {
         self.frame(maxWidth: .infinity, alignment: .leading)
     }
 
 
-    /// Expands the view horizontally and centers it.
+    /// Fills the available width and centers it.
     ///
     /// - Returns: A view with infinite horizontal width and centered alignment.
     ///
     /// # Usage
     /// ```swift
     /// Text("Hello")
-    ///     .hCenter()
+    ///     .alignHCenter()
     /// ```
-    public func hCenter() -> some View {
+    public func alignHCenter() -> some View {
         self.frame(maxWidth: .infinity, alignment: .center)
     }
 
 
-    /// Expands the view horizontally and aligns it to the trailing edge.
+    /// Fills the available width and aligns it to the trailing edge.
     ///
     /// - Returns: A view with infinite horizontal width and trailing alignment.
     ///
     /// # Usage
     /// ```swift
     /// Text("Hello")
-    ///     .hTrailing()
+    ///     .alignRight()
     /// ```
-    public func hTrailing() -> some View {
+    public func alignRight() -> some View {
         self.frame(maxWidth: .infinity, alignment: .trailing)
     }
 
 
-    /// Expands the view vertically and aligns it to the top edge.
+    /// Fills the available height and aligns it to the top edge.
     ///
     /// - Returns: A view with infinite vertical height and top alignment.
     ///
     /// # Usage
     /// ```swift
     /// Text("Hello")
-    ///     .vTop()
+    ///     .alignTop()
     /// ```
-    public func vTop() -> some View {
+    public func alignTop() -> some View {
         self.frame(maxHeight: .infinity, alignment: .top)
     }
 
 
-    /// Expands the view vertically and centers it.
+    /// Fills the available height and centers it.
     ///
     /// - Returns: A view with infinite vertical height and centered alignment.
     ///
     /// # Usage
     /// ```swift
     /// Text("Hello")
-    ///     .vCenter()
+    ///     .alignVCenter()
     /// ```
-    public func vCenter() -> some View {
+    public func alignVCenter() -> some View {
         self.frame(maxHeight: .infinity, alignment: .center)
     }
 
-    
-    /// Expands the view vertically and aligns it to the bottom edge.
+
+    /// Fills the available height and aligns it to the bottom edge.
     ///
     /// - Returns: A view with infinite vertical height and bottom alignment.
     ///
     /// # Usage
     /// ```swift
     /// Text("Hello")
-    ///     .vBottom()
+    ///     .alignBottom()
     /// ```
-    public func vBottom() -> some View {
+    public func alignBottom() -> some View {
         self.frame(maxHeight: .infinity, alignment: .bottom)
     }
 }
