@@ -25,8 +25,8 @@ public extension Color {
     /// ```swift
     /// let background = Color.blue
     /// let foreground = background.accessibleTextColor()
-    /// ```
     /// > sample result: Color.white
+    /// ```
     func accessibleTextColor() -> Color {
 #if os(iOS)
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0
@@ -48,8 +48,8 @@ public extension Color {
     /// ```swift
     /// let base = Color.gray
     /// let enhanced = base.highContrast()
-    /// ```
     /// > sample result: A lighter or darker gray depending on brightness
+    /// ```
     func highContrast() -> Color {
 #if os(iOS)
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
@@ -77,8 +77,8 @@ public extension Color {
     /// ```swift
     /// let original = Color.red
     /// let inverted = original.inverted()
-    /// ```
     /// > sample result: Cyan (complement of red)
+    /// ```
     func inverted() -> Color {
 #if os(iOS)
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
@@ -99,8 +99,8 @@ public extension Color {
     /// ```swift
     /// let colored = Color.purple
     /// let gray = colored.grayscale()
-    /// ```
     /// > sample result: A gray tone with equal RGB values
+    /// ```
     func grayscale() -> Color {
 #if os(iOS)
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
@@ -123,8 +123,8 @@ public extension Color {
     /// # Usage
     /// ```swift
     /// let textColor = Color.blue.adaptiveContrast(to: .white)
-    /// ```
     /// > sample result: Color.blue (if contrast sufficient) or inverted color
+    /// ```
     func adaptiveContrast(to background: Color) -> Color {
 #if os(iOS)
         var fgRed: CGFloat = 0, fgGreen: CGFloat = 0, fgBlue: CGFloat = 0, fgAlpha: CGFloat = 1
@@ -160,8 +160,8 @@ public extension Color {
     /// # Usage
     /// ```swift
     /// let blended = Color.red.blended(with: .blue, ratio: 0.5)
-    /// ```
     /// > sample result: A purple-like color
+    /// ```
     func blended(with color: Color, ratio: CGFloat) -> Color {
 #if os(iOS)
         var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 1
@@ -191,8 +191,8 @@ public extension Color {
     /// # Usage
     /// ```swift
     /// let shifted = Color.red.hueRotated(by: 180)
-    /// ```
     /// > sample result: Cyan
+    /// ```
     func hueRotated(by degrees: CGFloat) -> Color {
 #if os(iOS)
         var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 1
@@ -219,8 +219,8 @@ extension Color {
     /// if Color.yellow.isLightColor() {
     ///     // use dark foreground
     /// }
-    /// ```
     /// > sample result: true
+    /// ```
     func isLightColor() -> Bool {
 #if os(iOS)
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1
@@ -245,8 +245,8 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let ratio = Color.black.contrastRatio(with: .white)
-    /// ```
     /// > sample result: 21.0
+    /// ```
     func contrastRatio(with other: Color) -> CGFloat {
 #if os(iOS)
         func luminance(for color: UIColor) -> CGFloat {
@@ -277,8 +277,8 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let alpha = Color.black.opacityValue()
-    /// ```
     /// > sample result: 1.0
+    /// ```
     func opacityValue() -> CGFloat {
 #if os(iOS)
         var alpha: CGFloat = 1.0
@@ -289,7 +289,7 @@ extension Color {
 #endif
     }
 
-    
+
     /// Calculates the color distance (Euclidean distance in RGB space) to another color.
     ///
     /// - Parameter other: The color to compare to.
@@ -298,8 +298,8 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let distance = Color.red.distance(to: .blue)
-    /// ```
     /// > sample result: ~1.41
+    /// ```
     func distance(to other: Color) -> CGFloat {
 #if os(iOS)
         var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 1
