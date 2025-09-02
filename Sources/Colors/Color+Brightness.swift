@@ -19,6 +19,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let brightness = Color.orange.brightnessValue()
+    /// > sample result: 0.72
     /// ```
     func brightnessValue() -> CGFloat {
 #if os(iOS)
@@ -41,6 +42,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let adjusted = Color.blue.clampedBrightness(minimum: 0.3, maximum: 0.7)
+    /// > sample result: A color with brightness clamped between 0.3 and 0.7
     /// ```
     func clampedBrightness(minimum: CGFloat, maximum: CGFloat) -> Color {
 #if os(iOS)
@@ -63,6 +65,7 @@ extension Color {
     /// ```swift
     /// let lighter = Color.red.adjustingBrightness(by: 0.2)
     /// let darker = Color.red.adjustingBrightness(by: -0.2)
+    /// > sample result: A lighter or darker red depending on the percentage
     /// ```
     func adjustingBrightness(by percentage: CGFloat) -> Color {
 #if os(iOS)
@@ -84,6 +87,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let vivid = Color.blue.increasedSaturation(by: 0.3)
+    /// > sample result: A more vivid blue
     /// ```
     func increasedSaturation(by amount: CGFloat) -> Color {
     #if os(iOS)
@@ -105,6 +109,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let muted = Color.green.desaturated(by: 0.4)
+    /// > sample result: A muted green
     /// ```
     func desaturated(by amount: CGFloat) -> Color {
 #if os(iOS)
@@ -125,6 +130,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let gray = Color.purple.grayscalePreservingBrightness()
+    /// > sample result: A gray color preserving brightness
     /// ```
     func grayscalePreservingBrightness() -> Color {
 #if os(iOS)
@@ -144,6 +150,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let inverted = Color.yellow.invertedBrightness()
+    /// > sample result: A yellow color inverted to dark shade
     /// ```
     func invertedBrightness() -> Color {
     #if os(iOS)
@@ -166,6 +173,7 @@ extension Color {
     /// ```swift
     /// let tinted = Color.red.tintedOrShaded(by: 0.3)   // mix with white
     /// let shaded = Color.red.tintedOrShaded(by: -0.3)  // mix with black
+    /// > sample result: A tinted red mixed with white or shaded red mixed with black
     /// ```
     func tintedOrShaded(by weight: CGFloat) -> Color {
     #if os(iOS)
@@ -195,6 +203,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let normalized = Color.orange.normalizedBrightness()
+    /// > sample result: A color normalized to mid brightness
     /// ```
     func normalizedBrightness() -> Color {
     #if os(iOS)
@@ -215,6 +224,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let bright = Color.gray.brightened(by: 0.3)
+    /// > sample result: A lighter gray
     /// ```
     func brightened(by amount: CGFloat) -> Color {
     #if os(iOS)
@@ -241,6 +251,7 @@ extension Color {
     /// # Usage
     /// ```swift
     /// let dark = Color.orange.darkened(by: 0.4)
+    /// > sample result: A darker orange
     /// ```
     func darkened(by amount: CGFloat) -> Color {
     #if os(iOS)
