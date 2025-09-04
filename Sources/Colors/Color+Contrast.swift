@@ -34,4 +34,18 @@ extension Color {
         let luminance = (0.299 * r + 0.587 * g + 0.114 * b)
         return luminance > 0.5
     }
+
+
+    /// Returns a contrasting color (`.black` or `.white`) for text, depending on the brightness of this color.
+    ///
+    /// - Returns: `.black` if the color is light, `.white` if the color is dark.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let textColor = Color.blue.contrastingTextColor
+    /// ```
+    /// > sample result: `.white`
+    public var contrastingTextColor: Color {
+        return isLight ? .black : .white
+    }
 }
