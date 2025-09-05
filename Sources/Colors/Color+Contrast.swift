@@ -48,4 +48,22 @@ extension Color {
     public var contrastingTextColor: Color {
         return isLight ? .black : .white
     }
+
+
+    /// The relative luminance of the color.
+    ///
+    /// - Returns: The luminance value as a `CGFloat` in the range [0, 1], where 0 is dark and 1 is light.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let lum = Color.black.luminance
+    /// ```
+    /// > sample result: `0.0`
+    public var luminance: CGFloat {
+        let components = UIColor(self).cgColor.components ?? [0,0,0]
+        let r = components.count >= 3 ? components[0] : components[0]
+        let g = components.count >= 3 ? components[1] : components[0]
+        let b = components.count >= 3 ? components[2] : components[0]
+        return (0.299 * r + 0.587 * g + 0.114 * b)
+    }
 }
