@@ -66,4 +66,22 @@ extension Color {
         let b = components.count >= 3 ? components[2] : components[0]
         return (0.299 * r + 0.587 * g + 0.114 * b)
     }
+
+
+    /// Checks if the contrast ratio between this color and another color meets the WCAG AA minimum (4.5:1).
+    ///
+    /// - Parameter other: The other `Color` to compare contrast against.
+    /// - Returns: `true` if the contrast ratio is at least 4.5, `false` otherwise.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let hasContrast = Color.white.hasSufficientContrast(with: .gray)
+    /// ```
+    /// > sample result: `false`
+    public func hasSufficientContrast(with other: Color) -> Bool {
+        let l1 = luminance + 0.05
+        let l2 = other.luminance + 0.05
+        let ratio = l1 > l2 ? l1 / l2 : l2 / l1
+        return ratio >= 4.5
+    }
 }
