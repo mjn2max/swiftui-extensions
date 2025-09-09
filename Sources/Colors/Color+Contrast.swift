@@ -84,4 +84,20 @@ extension Color {
         let ratio = l1 > l2 ? l1 / l2 : l2 / l1
         return ratio >= 4.5
     }
+
+
+    /// Returns either black or white depending on which provides the better contrast with this color.
+    ///
+    /// - Returns: `.black` if black has a higher contrast ratio with this color, `.white` otherwise.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let best = Color.red.bestContrastingColor
+    /// ```
+    /// > sample result: `.white`
+    public var bestContrastingColor: Color {
+        let contrastWithBlack = contrastRatio(with: .black)
+        let contrastWithWhite = contrastRatio(with: .white)
+        return contrastWithBlack > contrastWithWhite ? .black : .white
+    }
 }
