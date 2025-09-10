@@ -100,4 +100,26 @@ extension Color {
         let contrastWithWhite = contrastRatio(with: .white)
         return contrastWithBlack > contrastWithWhite ? .black : .white
     }
+
+
+    /// Adjusts the brightness of the color by a given factor.
+    ///
+    /// - Parameter amount: A value between -1.0 and 1.0. Negative values darken the color, positive values lighten it.
+    /// - Returns: A new `Color` adjusted for brightness.
+    ///
+    /// # Usage
+    /// ```swift
+    /// let lighter = Color.blue.adjustBrightness(by: 0.2)
+    /// ```
+    /// > sample result: A lighter shade of blue
+    public func adjustBrightness(by amount: CGFloat) -> Color {
+        let uiColor = UIColor(self)
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+        uiColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        let newBrightness = max(min(brightness + amount, 1.0), 0.0)
+        return Color(hue: Double(hue), saturation: Double(saturation), brightness: Double(newBrightness))
+    }
 }
