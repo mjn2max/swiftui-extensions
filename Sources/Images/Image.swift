@@ -54,6 +54,30 @@ extension Image {
             }
     }
 
+
+    /// Applies a tint color to the image, optionally specifying a blend mode.
+    ///
+    /// Use this for template or monochrome assets where you want to colorize the image.
+    /// If the image isn't a template, consider setting `.renderingMode(.template)` upstream.
+    ///
+    /// - Parameters:
+    ///   - color: The tint color to apply.
+    ///   - blendMode: The blend mode used to apply the tint (default is `.sourceAtop`).
+    /// - Returns: A view with the tinted image.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image(systemName: "star.fill")
+    ///     .resizable()
+    ///     .tinted(.yellow)
+    /// ```
+    func tinted(_ color: Color, blendMode: BlendMode = .sourceAtop) -> some View {
+        self
+            .renderingMode(.template)
+            .foregroundStyle(color)
+            .blendMode(blendMode)
+    }
+    
     
     private struct ConditionalFrameModifier: ViewModifier {
         let size: CGSize?
