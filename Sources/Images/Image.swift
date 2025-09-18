@@ -79,6 +79,14 @@ extension Image {
     }
     
     
+    /// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
+    ///
+    /// Use this modifier when you want to size an image (or any view) only when a concrete
+    /// `CGSize` is provided. If `size` is `nil`, the modifier leaves the content's sizing
+    /// behavior unchanged.
+    ///
+    /// - Parameter size: An optional `CGSize` specifying the target width and height. When non-nil,
+    ///   the content is framed to `size.width` by `size.height`. When `nil`, no frame is applied.
     private struct ConditionalFrameModifier: ViewModifier {
         let size: CGSize?
 
