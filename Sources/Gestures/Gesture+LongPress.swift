@@ -9,4 +9,24 @@
 // CodePassion.dev
 //
 
-import Foundation
+import SwiftUI
+
+// MARK: - Gesture Extensions - Long Press
+
+extension View {
+    /// Adds a long press gesture with a default duration of 0.5 seconds.
+    ///
+    /// - Parameter action: A closure called when the long press gesture completes.
+    /// - Returns: A view that triggers the action on long press.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Text("Hold Me")
+    ///     .onLongPress {
+    ///         print("Long pressed!")
+    ///     }
+    /// ```
+    public func onLongPress(_ action: @escaping () -> Void) -> some View {
+        self.onLongPressGesture(perform: action)
+    }
+}
