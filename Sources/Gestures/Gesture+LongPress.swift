@@ -29,4 +29,31 @@ extension View {
     public func onLongPress(_ action: @escaping () -> Void) -> some View {
         self.onLongPressGesture(perform: action)
     }
+
+    
+    /// Adds a long press gesture with customizable duration and maximum allowed movement.
+    ///
+    /// - Parameters:
+    ///   - duration: The minimum duration (in seconds) the user must hold the press.
+    ///   - maximumDistance: The maximum movement allowed during the press before it cancels.
+    ///   - action: A closure called when the gesture completes.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Circle()
+    ///     .fill(Color.blue)
+    ///     .frame(width: 80, height: 80)
+    ///     .onLongPress(duration: 1.0, maximumDistance: 10) {
+    ///         print("Pressed for 1 second")
+    ///     }
+    /// ```
+    public func onLongPress(
+        duration: Double,
+        maximumDistance: CGFloat = 10,
+        action: @escaping () -> Void
+    ) -> some View {
+        self.onLongPressGesture(minimumDuration: duration,
+                                maximumDistance: maximumDistance,
+                                perform: action)
+    }
 }
