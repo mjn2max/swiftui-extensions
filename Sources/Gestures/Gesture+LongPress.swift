@@ -56,4 +56,33 @@ extension View {
                                 maximumDistance: maximumDistance,
                                 perform: action)
     }
+
+    
+    /// Adds a long press gesture with a state callback for press start and completion.
+    ///
+    /// - Parameters:
+    ///   - duration: The minimum duration (in seconds) the user must hold the press.
+    ///   - onPressingChanged: A closure called with `true` when press begins and `false` when released.
+    ///   - onCompleted: A closure called when the press is held for the full duration.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Rectangle()
+    ///     .fill(Color.green)
+    ///     .frame(width: 120, height: 60)
+    ///     .onLongPressState(duration: 1.5) { isPressing in
+    ///         print("Pressing: \(isPressing)")
+    ///     } onCompleted: {
+    ///         print("Completed long press")
+    ///     }
+    /// ```
+    public func onLongPressState(
+        duration: Double = 0.5,
+        onPressingChanged: @escaping (Bool) -> Void,
+        onCompleted: @escaping () -> Void
+    ) -> some View {
+        self.onLongPressGesture(minimumDuration: duration,
+                                perform: onCompleted,
+                                onPressingChanged: onPressingChanged)
+    }
 }
