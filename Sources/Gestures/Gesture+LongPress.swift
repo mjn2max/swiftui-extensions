@@ -86,3 +86,25 @@ extension View {
                                 onPressingChanged: onPressingChanged)
     }
 }
+
+private struct LongPressScaleModifier: ViewModifier {
+    let duration: Double
+    let scale: CGFloat
+    let action: () -> Void
+    @GestureState private var isPressed = false
+    
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(isPressed ? scale : 1.0)
+            .animation(.spring(), value: isPressed)
+            .gesture(
+                LongPressGesture(minimumDuration: duration)
+                    .updating($isPressed) { current, state, _ in
+                        state = current
+                    }
+                    .onEnded { _ in
+                        action()
+                    }
+            )
+    }
+}
