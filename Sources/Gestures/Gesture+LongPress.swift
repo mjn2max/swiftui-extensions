@@ -31,6 +31,31 @@ extension View {
     }
 
     
+    /// Adds a long press gesture that triggers haptic feedback when pressed.
+    ///
+    /// - Parameters:
+    ///   - duration: The minimum duration for the long press.
+    ///   - style: The `UIImpactFeedbackGenerator.FeedbackStyle` for the haptic (default: `.medium`).
+    ///   - action: A closure called when the gesture completes.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Text("Haptic Press")
+    ///     .onLongPressHaptic {
+    ///         print("Long pressed with haptic!")
+    ///     }
+    /// ```
+    public func onLongPressHaptic(
+        duration: Double = 0.5,
+        style: UIImpactFeedbackGenerator.FeedbackStyle = .medium,
+        action: @escaping () -> Void
+    ) -> some View {
+        self.onLongPressGesture(minimumDuration: duration) {
+            let generator = UIImpactFeedbackGenerator(style: style)
+            generator.impactOccurred()
+            action()
+        }
+    }
     /// Adds a long press gesture with customizable duration and maximum allowed movement.
     ///
     /// - Parameters:
