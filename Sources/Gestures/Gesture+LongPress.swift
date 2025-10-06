@@ -56,6 +56,30 @@ extension View {
             action()
         }
     }
+    
+    /// Adds a long press gesture that scales the view while pressing.
+    ///
+    /// - Parameters:
+    ///   - duration: The minimum duration for the long press.
+    ///   - scale: The scale factor applied while pressing.
+    ///   - action: A closure called when the gesture completes.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image(systemName: "heart.fill")
+    ///     .resizable()
+    ///     .frame(width: 50, height: 50)
+    ///     .onLongPressScale(scale: 1.3) {
+    ///         print("Heart long pressed!")
+    ///     }
+    /// ```
+    public func onLongPressScale(
+        duration: Double = 0.5,
+        scale: CGFloat = 1.2,
+        action: @escaping () -> Void
+    ) -> some View {
+        self.modifier(LongPressScaleModifier(duration: duration, scale: scale, action: action))
+    }
     /// Adds a long press gesture with customizable duration and maximum allowed movement.
     ///
     /// - Parameters:
