@@ -9,7 +9,6 @@
 // CodePassion.dev
 //
 
-import Foundation
 import SwiftUI
 
 // MARK: - Gesture Extensions - Magnification (Pinch to Zoom)
@@ -52,6 +51,42 @@ private struct PinchToZoomModifier: ViewModifier {
             .simultaneousGesture(
                 doubleTapToReset
                 ? TapGesture(count: 2).onEnded { baseScale = 1.0 }
+                : nil
+            )
+    }
+
+    private func clamp(_ s: CGFloat) -> CGFloat {
+        min(max(s, minScale), maxScale)
+    }
+}
+
+/// A pinch‑to‑zoom modifier that binds the persistent scale to external state.
+private struct PinchToZoomBindingModifier: ViewModifier {
+    @Binding var scale: CGFloat
+    let minScale: CGFloat
+    let maxScale: CGFloat
+    let doubleTapToReset: Bool
+
+    @GestureState private var gestureScale: CGFloat = 1.0
+
+    func body(content: Content) -> some View {
+        let effectiveScale = clamp(scale * gestureScale)
+
+        return content
+            .scaleEffect(effectiveScale)
+            .animation(.spring(response: 0.25, dampingFraction: 0.9), value: gestureScale == 1 ? scale : effectiveScale)
+            .gesture(
+                MagnificationGesture()
+                    .updating($gestureScale) { value, state, _ in
+                        state = value
+                    }
+                    .onEnded { value in
+                        scale = clamp(scale * value)
+                    }
+            )
+            .simultaneousGesture(
+                doubleTapToReset
+                ? TapGesture(count: 2).onEnded { scale = 1.0 }
                 : nil
             )
     }
