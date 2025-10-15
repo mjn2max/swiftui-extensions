@@ -14,6 +14,25 @@ import SwiftUI
 // MARK: - Gesture Extensions - Magnification (Pinch to Zoom)
 
 extension View {
+    /// Adds a simple magnification handler that reports the *live* combined scale value.
+    ///
+    /// - Parameter onChanged: Called continuously with the current scale (1.0 = original).
+    /// - Returns: A view that reports live magnification changes.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Text("Pinch me")
+    ///     .onMagnify { scale in
+    ///         print("Scale:", scale)
+    ///     }
+    /// ```
+    /// > sample result: Prints values like 1.00 → 1.35 → 2.10 while pinching.
+    public func onMagnify(_ onChanged: @escaping (CGFloat) -> Void) -> some View {
+        self.gesture(
+            MagnificationGesture()
+                .onChanged { scale in onChanged(scale) }
+        )
+    }
 }
 
 // MARK: - Internal Modifiers
