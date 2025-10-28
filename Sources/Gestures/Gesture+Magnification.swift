@@ -33,6 +33,35 @@ extension View {
                 .onChanged { scale in onChanged(scale) }
         )
     }
+
+    /// Adds a magnification gesture with configurable callbacks for change & end.
+    ///
+    /// - Parameters:
+    ///   - onChanged: Called continuously with the current scale.
+    ///   - onEnded: Called once with the final scale when the gesture ends.
+    /// - Returns: A view that reports magnification change and end events.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Rectangle()
+    ///     .fill(.blue)
+    ///     .frame(width: 120, height: 120)
+    ///     .onMagnify(onChanged: { s in
+    ///         print("Live:", s)
+    ///     }, onEnded: { s in
+    ///         print("Final:", s)
+    ///     })
+    /// ```
+    public func onMagnify(
+        onChanged: @escaping (CGFloat) -> Void,
+        onEnded: @escaping (CGFloat) -> Void
+    ) -> some View {
+        self.gesture(
+            MagnificationGesture()
+                .onChanged(onChanged)
+                .onEnded(onEnded)
+        )
+    }
 }
 
 // MARK: - Internal Modifiers
