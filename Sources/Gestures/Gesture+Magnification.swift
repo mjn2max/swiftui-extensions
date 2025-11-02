@@ -62,6 +62,42 @@ extension View {
                 .onEnded(onEnded)
         )
     }
+
+    /// Makes the view pinch‑to‑zoom with internal state and optional double‑tap‑to‑reset.
+    ///
+    /// - Parameters:
+    ///   - minScale: Minimum allowed scale (default: `1.0`).
+    ///   - maxScale: Maximum allowed scale (default: `4.0`).
+    ///   - doubleTapToReset: If `true`, a double‑tap resets to 1.0 (default: `true`).
+    ///   - onChanged: Optional callback receiving the *live* effective scale.
+    ///   - onEnded: Optional callback receiving the final clamped scale.
+    /// - Returns: A zoomable view with built‑in clamping and reset behavior.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("photo")
+    ///     .resizable()
+    ///     .scaledToFit()
+    ///     .pinchToZoom(minScale: 1, maxScale: 3)
+    /// ```
+    /// > sample result: Pinch to zoom up to 3×, double‑tap to reset back to 1×.
+    public func pinchToZoom(
+        minScale: CGFloat = 1.0,
+        maxScale: CGFloat = 4.0,
+        doubleTapToReset: Bool = true,
+        onChanged: ((CGFloat) -> Void)? = nil,
+        onEnded: ((CGFloat) -> Void)? = nil
+    ) -> some View {
+        modifier(
+            PinchToZoomModifier(
+                minScale: minScale,
+                maxScale: maxScale,
+                doubleTapToReset: doubleTapToReset,
+                onChanged: onChanged,
+                onEnded: onEnded
+            )
+        )
+    }
 }
 
 // MARK: - Internal Modifiers
