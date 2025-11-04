@@ -98,6 +98,48 @@ extension View {
             )
         )
     }
+
+    /// Makes the view pinch‑to‑zoom while binding the *persistent* scale to external state.
+    ///
+    /// - Parameters:
+    ///   - scale: A binding to the persistent scale (e.g., `@State var scale: CGFloat`).
+    ///   - minScale: Minimum allowed scale (default: `1.0`).
+    ///   - maxScale: Maximum allowed scale (default: `4.0`).
+    ///   - doubleTapToReset: If `true`, a double‑tap resets to 1.0 (default: `true`).
+    /// - Returns: A zoomable view with its scale synchronized to the provided binding.
+    ///
+    /// # Usage
+    /// ```swift
+    /// struct ZoomDemo: View {
+    ///     @State private var scale: CGFloat = 1
+    ///
+    ///     var body: some View {
+    ///         VStack {
+    ///             Text(String(format: "Scale: %.2f×", scale))
+    ///             Image(systemName: "doc.richtext")
+    ///                 .resizable()
+    ///                 .frame(width: 120, height: 160)
+    ///                 .pinchToZoom(scale: $scale, minScale: 1, maxScale: 5)
+    ///         }
+    ///     }
+    /// }
+    /// ```
+    /// > sample result: The label updates live as you pinch; double‑tap resets back to 1×.
+    public func pinchToZoom(
+        scale: Binding<CGFloat>,
+        minScale: CGFloat = 1.0,
+        maxScale: CGFloat = 4.0,
+        doubleTapToReset: Bool = true
+    ) -> some View {
+        modifier(
+            PinchToZoomBindingModifier(
+                scale: scale,
+                minScale: minScale,
+                maxScale: maxScale,
+                doubleTapToReset: doubleTapToReset
+            )
+        )
+    }
 }
 
 // MARK: - Internal Modifiers
