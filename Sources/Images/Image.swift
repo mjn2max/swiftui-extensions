@@ -79,6 +79,18 @@ extension Image {
     }
     
     
+    /// Applies a grayscale effect to the image.
+    /// - Parameter amount: The intensity of the grayscale effect (0 = original, 1 = grayscale).
+    /// - Returns: A view with the grayscale effect applied.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("photo").grayscaled(0.7)
+    /// ```
+    func grayscaled(_ amount: Double = 1.0) -> some View {
+        self
+            .saturation(1 - amount)
+    }
     /// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
     ///
     /// Use this modifier when you want to size an image (or any view) only when a concrete
