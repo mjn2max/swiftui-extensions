@@ -91,6 +91,20 @@ extension Image {
         self
             .saturation(1 - amount)
     }
+
+    /// Blurs the image by a specified radius.
+    /// - Parameter radius: The blur radius in points.
+    /// - Returns: A blurred image view.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("photo").blurred(radius: 5)
+    /// ```
+    func blurred(radius: CGFloat) -> some View {
+        self
+            .blur(radius: radius)
+    }
+
     /// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
     ///
     /// Use this modifier when you want to size an image (or any view) only when a concrete
