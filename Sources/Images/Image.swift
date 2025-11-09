@@ -105,6 +105,18 @@ extension Image {
             .blur(radius: radius)
     }
 
+    /// Applies rounded corners to the image with a given radius.
+    /// - Parameter radius: The radius of the rounded corners.
+    /// - Returns: The image clipped with rounded corners.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("avatar").cornered(12)
+    /// ```
+    func cornered(_ radius: CGFloat) -> some View {
+        self
+            .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
+    }
     /// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
     ///
     /// Use this modifier when you want to size an image (or any view) only when a concrete
