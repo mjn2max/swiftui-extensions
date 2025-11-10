@@ -117,6 +117,19 @@ extension Image {
         self
             .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
     }
+
+    /// Rotates the image by the specified number of degrees.
+    /// - Parameter degrees: The angle in degrees to rotate the image.
+    /// - Returns: The rotated image view.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("arrow").rotated(45)
+    /// ```
+    func rotated(_ degrees: Double) -> some View {
+        self
+            .rotationEffect(.degrees(degrees))
+    }
     /// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
     ///
     /// Use this modifier when you want to size an image (or any view) only when a concrete
