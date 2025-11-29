@@ -130,23 +130,44 @@ extension Image {
         self
             .rotationEffect(.degrees(degrees))
     }
-    /// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
+    /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
+    /// - Parameters:
+    ///   - alignment: Corner alignment for the badge.
+    ///   - content: The badge view builder.
     ///
-    /// Use this modifier when you want to size an image (or any view) only when a concrete
-    /// `CGSize` is provided. If `size` is `nil`, the modifier leaves the content's sizing
-    /// behavior unchanged.
-    ///
-    /// - Parameter size: An optional `CGSize` specifying the target width and height. When non-nil,
-    ///   the content is framed to `size.width` by `size.height`. When `nil`, no frame is applied.
-    private struct ConditionalFrameModifier: ViewModifier {
-        let size: CGSize?
-
-        func body(content: Content) -> some View {
-            if let size = size {
-                content.frame(width: size.width, height: size.height)
-            } else {
-                content
+    /// # Usage
+    /// ```swift
+    /// Image("item")
+    ///     .resizedAndFitted(to: .init(width: 80, height: 80))
+    ///     .withCornerBadge(alignment: .bottomTrailing) {
+    ///         Text("3")
+    ///             .font(.caption2).bold()
+    ///             .padding(4)
+    ///             .background(.ultraThinMaterial, in: Capsule())
+    ///     }
+    /// ```
+    func withCornerBadge<Badge: View>(alignment: Alignment = .topTrailing, @ViewBuilder content: () -> Badge) -> some View {
+        self
+            .overlay(alignment: alignment) {
+                content()
             }
+    }
+/// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
+///
+/// Use this modifier when you want to size an image (or any view) only when a concrete
+/// `CGSize` is provided. If `size` is `nil`, the modifier leaves the content's sizing
+/// behavior unchanged.
+///
+/// - Parameter size: An optional `CGSize` specifying the target width and height. When non-nil,
+///   the content is framed to `size.width` by `size.height`. When `nil`, no frame is applied.
+fileprivate struct ConditionalFrameModifier: ViewModifier {
+    let size: CGSize?
+
+    func body(content: Content) -> some View {
+        if let size = size {
+            content.frame(width: size.width, height: size.height)
+        } else {
+            content
         }
     }
 }
