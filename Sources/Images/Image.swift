@@ -130,6 +130,18 @@ extension Image {
         self
             .rotationEffect(.degrees(degrees))
     }
+
+    /// Flips the image horizontally.
+    /// - Returns: The image flipped horizontally.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("photo").flippedHorizontally()
+    /// ```
+    func flippedHorizontally() -> some View {
+        self
+            .scaleEffect(x: -1, y: 1, anchor: .center)
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
