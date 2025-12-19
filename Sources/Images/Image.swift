@@ -142,6 +142,18 @@ extension Image {
         self
             .scaleEffect(x: -1, y: 1, anchor: .center)
     }
+
+    /// Flips the image vertically.
+    /// - Returns: The image flipped vertically.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("photo").flippedVertically()
+    /// ```
+    func flippedVertically() -> some View {
+        self
+            .scaleEffect(x: 1, y: -1, anchor: .center)
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
