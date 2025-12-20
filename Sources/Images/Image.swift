@@ -154,6 +154,23 @@ extension Image {
         self
             .scaleEffect(x: 1, y: -1, anchor: .center)
     }
+
+    /// Adds a shadow to the image.
+    /// - Parameters:
+    ///   - color: The color of the shadow.
+    ///   - radius: The blur radius of the shadow.
+    ///   - x: The horizontal offset.
+    ///   - y: The vertical offset.
+    /// - Returns: The image with a shadow.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("icon").shadowed(color: .black.opacity(0.2), radius: 8, x: 2, y: 2)
+    /// ```
+    func shadowed(color: Color = .black.opacity(0.15), radius: CGFloat = 4, x: CGFloat = 0, y: CGFloat = 2) -> some View {
+        self
+            .shadow(color: color, radius: radius, x: x, y: y)
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
