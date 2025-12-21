@@ -171,6 +171,16 @@ extension Image {
         self
             .shadow(color: color, radius: radius, x: x, y: y)
     }
+
+    /// Forces the image to render as a template for tinting with `foregroundStyle`.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image(systemName: "heart.fill").asTemplate().foregroundStyle(.red)
+    /// ```
+    func asTemplate() -> some View {
+        self.renderingMode(.template)
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
