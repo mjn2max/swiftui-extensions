@@ -181,6 +181,16 @@ extension Image {
     func asTemplate() -> some View {
         self.renderingMode(.template)
     }
+
+    /// Forces the image to render with its original colors, ignoring system tint.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("logo").asOriginal()
+    /// ```
+    func asOriginal() -> some View {
+        self.renderingMode(.original)
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
