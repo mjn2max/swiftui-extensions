@@ -191,6 +191,28 @@ extension Image {
     func asOriginal() -> some View {
         self.renderingMode(.original)
     }
+
+    /// Applies a rounded rectangle stroke around the image.
+    /// - Parameters:
+    ///   - color: Stroke color.
+    ///   - lineWidth: Stroke width. Default 1.
+    ///   - cornerRadius: Corner radius. Default 8.
+    /// - Returns: An image with a rounded rectangle border overlay.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("thumb")
+    ///     .resizedAndFitted(to: .init(width: 80, height: 80))
+    ///     .roundedBorder(color: .secondary, lineWidth: 1, cornerRadius: 10)
+    /// ```
+    func roundedBorder(color: Color = .secondary, lineWidth: CGFloat = 1, cornerRadius: CGFloat = 8) -> some View {
+        self
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(color, lineWidth: lineWidth)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
