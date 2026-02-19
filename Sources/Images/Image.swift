@@ -213,6 +213,30 @@ extension Image {
             )
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
     }
+
+    /// Wraps the image with a background shape and optional padding.
+    /// - Parameters:
+    ///   - color: Background fill color.
+    ///   - cornerRadius: Corner radius for background.
+    ///   - padding: Optional padding inside the background.
+    /// - Returns: The image with a rounded rectangle background.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image(systemName: "bolt.fill")
+    ///     .resizable()
+    ///     .scaledToFit()
+    ///     .withBackground(.yellow.opacity(0.2), cornerRadius: 12, padding: 8)
+    /// ```
+    func withBackground(_ color: Color, cornerRadius: CGFloat = 10, padding: CGFloat? = nil) -> some View {
+        let padded = padding
+            .map { AnyView(self.padding($0)) } ?? AnyView(self)
+        return padded
+            .background(
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(color)
+            )
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
