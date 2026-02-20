@@ -237,6 +237,34 @@ extension Image {
                     .fill(color)
             )
     }
+
+    /// Adds padding around the image and applies a capsule/rounded background automatically.
+    /// - Parameters:
+    ///   - padding: Padding amount around the image.
+    ///   - background: Background color.
+    ///   - isCapsule: When true, uses `Capsule()`; otherwise uses rounded rectangle.
+    ///   - cornerRadius: Corner radius when `isCapsule` is false.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image(systemName: "paperplane.fill")
+    ///     .resizable()
+    ///     .scaledToFit()
+    ///     .paddedBackground(10, background: .blue.opacity(0.1), isCapsule: true)
+    /// ```
+    func paddedBackground(_ padding: CGFloat = 8, background: Color = .secondary.opacity(0.12), isCapsule: Bool = false, cornerRadius: CGFloat = 10) -> some View {
+        self
+            .padding(padding)
+            .background(
+                Group {
+                    if isCapsule {
+                        Capsule().fill(background)
+                    } else {
+                        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous).fill(background)
+                    }
+                }
+            )
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
