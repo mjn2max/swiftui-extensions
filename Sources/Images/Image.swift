@@ -265,6 +265,23 @@ extension Image {
                 }
             )
     }
+
+    /// Applies a gradient mask to the image to fade edges or create stylish reveals.
+    /// - Parameter gradient: The gradient used as a mask.
+    /// - Returns: The image masked by the provided gradient.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("banner")
+    ///     .resizable()
+    ///     .scaledToFill()
+    ///     .withGradientMask(LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom))
+    /// ```
+    func withGradientMask(_ gradient: some ShapeStyle) -> some View {
+        self.mask(
+            Rectangle().fill(gradient)
+        )
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
