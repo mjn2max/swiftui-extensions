@@ -282,6 +282,21 @@ extension Image {
             Rectangle().fill(gradient)
         )
     }
+
+    /// Scales the image to fit a square of given side length, preserving aspect ratio.
+    /// - Parameter side: The target side length.
+    /// - Returns: The image framed in a square.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("photo").scaledToSquare(120)
+    /// ```
+    func scaledToSquare(_ side: CGFloat) -> some View {
+        self
+            .resizable()
+            .scaledToFit()
+            .frame(width: side, height: side)
+    }
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
