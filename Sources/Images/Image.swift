@@ -297,6 +297,21 @@ extension Image {
             .scaledToFit()
             .frame(width: side, height: side)
     }
+
+    /// Scales the image so that neither width nor height exceeds `maxDimension`.
+    /// - Parameter maxDimension: The maximum allowed dimension for width/height.
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("large").scaledToMaxDimension(200)
+    /// ```
+    func scaledToMaxDimension(_ maxDimension: CGFloat) -> some View {
+        self
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: maxDimension, maxHeight: maxDimension)
+    }
+
     /// Adds a small corner badge overlay (e.g., a checkmark or count) on the image.
     /// - Parameters:
     ///   - alignment: Corner alignment for the badge.
