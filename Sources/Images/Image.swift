@@ -334,6 +334,22 @@ extension Image {
                 content()
             }
     }
+
+    /// Converts the image to monochrome using `colorMultiply`.
+    /// - Parameter color: The target monochrome color (default `.primary`).
+    ///
+    /// # Usage
+    /// ```swift
+    /// Image("texture").monochrome(.gray)
+    /// ```
+    func monochrome(_ color: Color = .primary) -> some View {
+        self
+            .colorMultiply(color)
+            .saturation(0)
+            .contrast(1.1)
+    }
+}
+
 /// A view modifier that conditionally applies a fixed `frame(width:height:)` to its content.
 ///
 /// Use this modifier when you want to size an image (or any view) only when a concrete
